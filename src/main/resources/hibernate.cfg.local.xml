@@ -1,0 +1,31 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Configuración de la conexión a la base de datos -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/poo_bbdd</property>
+        <property name="hibernate.connection.username">test</property>
+        <property name="hibernate.connection.password">test</property>
+
+        <!-- Dialecto de la base de datos -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Mostrar o no las consultas SQL en la consola -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- Formato de las consultas SQL -->
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Ubicación de las clases de entidad -->
+<!--        <mapping class="Modelo.Entidades.Estandar"/>-->
+<!--        <mapping class="Modelo.Entidades.Excursion"/>-->
+        <mapping class="Modelo.Entidades.Federacion"/>
+<!--        <mapping class="Modelo.Entidades.Federado"/>-->
+<!--        <mapping class="Modelo.Entidades.Infantil"/>-->
+<!--        <mapping class="Modelo.Entidades.Inscripcion"/>-->
+<!--        <mapping class="Modelo.Entidades.Seguro"/>-->
+<!--        <mapping class="Modelo.Entidades.Socio"/>-->
+    </session-factory>
+</hibernate-configuration>
