@@ -32,7 +32,7 @@ public class SocioDAO {
         session.beginTransaction();
 
         session.persist(socio);
-
+        session.getTransaction().commit();
         session.close();
         return socio;
     }

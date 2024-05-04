@@ -1,12 +1,13 @@
 package Modelo.Entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "Estandar")
 @Entity
 public class Estandar extends Socio {
     private String nif;
+
+    @ManyToOne(targetEntity=Seguro.class, fetch= FetchType.EAGER)
     private Seguro seguroContratado;
 
     // Constructor vacío

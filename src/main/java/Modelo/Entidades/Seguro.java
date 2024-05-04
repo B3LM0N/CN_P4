@@ -1,11 +1,19 @@
 package Modelo.Entidades;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Table(name="seguro")
+@Entity
 public class Seguro {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSeguro;
-    public String tipo;
+
+    @Column
+    public String seguroContratado;
+
     public double precio;
 
     // Constructor vacío
@@ -13,9 +21,9 @@ public class Seguro {
 
     }
 
-    public Seguro(int idSeguro, String tipo, double precio) {
+    public Seguro(int idSeguro, String seguroContratado, double precio) {
         this.idSeguro = idSeguro;
-        this.tipo = tipo;
+        this.seguroContratado = seguroContratado;
         this.precio = precio;
     }
 
@@ -27,17 +35,17 @@ public class Seguro {
         this.idSeguro = idSeguro;
     }
 
-    public Seguro(String tipo, double precio) {
-        this.tipo = tipo;
+    public Seguro(String seguroContratado, double precio) {
+        this.seguroContratado = seguroContratado;
         this.precio = precio;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getSeguroContratado() {
+        return seguroContratado;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setSeguroContratado(String seguroContratado) {
+        this.seguroContratado = seguroContratado;
     }
 
     public double getPrecio() {
@@ -52,7 +60,7 @@ public class Seguro {
     public String toString() {
         return "Seguro{" +
                 "idSeguro=" + idSeguro +
-                ", tipo='" + tipo + '\'' +
+                ", seguroContratado='" + seguroContratado + '\'' +
                 ", precio=" + precio +
                 '}';
     }
