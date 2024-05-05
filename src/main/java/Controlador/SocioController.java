@@ -14,7 +14,6 @@ public class SocioController {
     SocioDAO socioDAO;
     SegurosDAO segurosDAO;
     FederacionDAO federacionDAO;
-    EstandarDAO estandarDAO;
 
     /**
      * Constructor de la clase SocioController.
@@ -23,7 +22,6 @@ public class SocioController {
         this.socioDAO = new SocioDAO();
         this.segurosDAO = new SegurosDAO();
         this.federacionDAO = new FederacionDAO();
-        this.estandarDAO = new EstandarDAO();
     }
 
     /**
@@ -84,7 +82,7 @@ public class SocioController {
         //estandar.setSeguroContratado(seguroElegido);
         Socio nuevo = socioDAO.crear(socio);
         estandar.setIdSocio(nuevo.getIdSocio());
-        estandarDAO.crear(estandar);
+        socioDAO.crearEstandar(estandar);
         return nuevo;
     }
 
@@ -93,8 +91,7 @@ public class SocioController {
      * @return Una lista de todos los socios en la base de datos.
      */
     public List<Socio> mostrar(){
-        List<Socio> socios = (List<Socio>) socioDAO.mostrar();
-        return socios;
+        return socioDAO.mostrar();
     }
 
     /**
@@ -103,8 +100,7 @@ public class SocioController {
      * @return Una lista de socios del tipo especificado.
      */
     public List<Socio> mostrarPorTipo(String tipoSocio){
-        List<Socio> socios = (List<Socio>) socioDAO.mostrarPorTipo(tipoSocio);
-        return socios;
+        return socioDAO.mostrarPorTipo(tipoSocio);
     }
 
     /**

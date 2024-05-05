@@ -153,7 +153,7 @@ public class Main {
 //                    Datos.modificarSeguro(idSocio);
                     break;
                 case 3:
-//                    Datos.borrarSocio();
+                    borrarSocio();
                     break;
                 case 4:
                     System.out.println("\n1. Mostrar todos los socios");
@@ -162,10 +162,10 @@ public class Main {
                     int opcion2 = Teclado.pedirInt("\nCual listado de socios quieres elegir: ");
                     switch (opcion2){
                         case 1:
-//                            Datos.mostrarSocios();
+                            mostrarSocio();
                             break;
                         case 2:
-//                            Datos.mostrarSociosPorTipo();
+                            mostrarSocioPorTipo();
                             break;
                         case 3:
                             System.out.println("\n-------------------------------------------------------");

@@ -71,4 +71,16 @@ public class Socio {
     public void setInfantil(Infantil infantil) {
         this.infantil = infantil;
     }
+
+    @Override
+    public String toString() {
+        return "Socio{" +
+                "idSocio=" + idSocio +
+                ", nombre='" + nombre + '\'' +
+                ", tipoSocio='" + tipoSocio + '\'' +
+                ", federado=" + federado +
+                ", estandar=" + estandar +
+                ", infantil=" + infantil +
+                '}';
+    }
 }

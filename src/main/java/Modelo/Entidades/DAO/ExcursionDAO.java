@@ -11,7 +11,7 @@ import java.util.List;
 public class ExcursionDAO {
 
     /* */
-    public static Excursion porId(int id){
+    public Excursion porId(int id){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 
@@ -31,7 +31,7 @@ public class ExcursionDAO {
         return excursion;
     }
 
-    public static Excursion crear(Excursion excursion){
+    public Excursion crear(Excursion excursion){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 
@@ -41,7 +41,7 @@ public class ExcursionDAO {
         return excursion;
     }
 
-    public static Excursion borrar(Excursion excursion){
+    public Excursion borrar(Excursion excursion){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 
@@ -51,7 +51,7 @@ public class ExcursionDAO {
         return excursion;
     }
 
-    public static List<Excursion> mostrarPorFechas(Date fechaInicio, Date fechaFin){
+    public List<Excursion> mostrarPorFechas(Date fechaInicio, Date fechaFin){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 

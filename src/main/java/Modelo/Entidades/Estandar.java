@@ -64,4 +64,12 @@ public class Estandar {
     public void setIdSocio(int idSocio) {
         this.idSocio = idSocio;
     }
+
+    @Override
+    public String toString() {
+        return "Estandar{" +
+                "idSocio=" + idSocio +
+                ", nif='" + nif + '\'' +
+                '}';
+    }
 }

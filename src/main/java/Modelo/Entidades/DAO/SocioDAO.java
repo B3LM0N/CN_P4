@@ -28,6 +28,14 @@ public class SocioDAO {
         session.close();
         return socio;
     }
+    public Estandar crearEstandar(Estandar estandar) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        session.persist(estandar);
+        session.getTransaction().commit();
+        session.close();
+        return estandar;
+    }
 
 
     public List<Socio> mostrar(){

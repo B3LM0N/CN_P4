@@ -26,7 +26,7 @@ public class ExcursionController {
      * @return La Excursion encontrada o null si no se encuentra ninguna con ese identificador.
      */
     public Excursion porId(int id){
-        return ExcursionDAO.porId(id);
+        return excursionDAO.porId(id);
     }
 
     /**
@@ -38,7 +38,7 @@ public class ExcursionController {
      */
     public void crear(String descripcion, Date fechaExcursion, int duracionDias, double precioInscripcion) {
         Excursion excursion = new Excursion(0, descripcion,fechaExcursion, duracionDias, precioInscripcion);
-        ExcursionDAO.crear(excursion);
+        excursionDAO.crear(excursion);
     }
 
     /**
@@ -46,8 +46,8 @@ public class ExcursionController {
      * @param idExcursion El identificador de la Excursion a borrar.
      */
     public void borrar(int idExcursion) {
-        Excursion excursion = ExcursionDAO.porId(idExcursion);
-        ExcursionDAO.borrar(excursion);
+        Excursion excursion = excursionDAO.porId(idExcursion);
+        excursionDAO.borrar(excursion);
     }
 
     /**
@@ -57,7 +57,7 @@ public class ExcursionController {
      * @return Una lista de Excursiones dentro del rango especificado.
      */
     public List<Excursion> mostrar(Date fechaInicio, Date fechaFin) {
-        List<Excursion> excursiones = ExcursionDAO.mostrarPorFechas(fechaInicio, fechaFin);
+        List<Excursion> excursiones = excursionDAO.mostrarPorFechas(fechaInicio, fechaFin);
         return excursiones;
     }
 }
