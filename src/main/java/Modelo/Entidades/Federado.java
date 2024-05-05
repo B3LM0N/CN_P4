@@ -11,8 +11,8 @@ public class Federado extends Socio {
     }
 
     // Constructor con todos los atributos
-    public Federado(int idSocio, String nombre, Federacion federacion, String nif) {
-        super(idSocio, nombre, "Federado");
+    public Federado(int idSocio, String nif,Federacion federacion) {
+        super(idSocio, nif, String.valueOf(federacion));
         this.federacion = federacion;
         this.nif = nif;
 

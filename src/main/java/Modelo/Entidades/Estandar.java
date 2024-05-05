@@ -11,13 +11,12 @@ public class Estandar extends Socio {
     private Seguro seguroContratado;
 
     // Constructor vacío
-    public Estandar() {
+    public Estandar(String nombre, String estandar, String nif, Seguro seguroElegido, int idSocio) {
     }
 
     // Constructor con todos los atributos
-
-    public Estandar(int idSocio, String nombre, String nif, Seguro seguroContratado) {
-        super(idSocio, nombre , "Estandar");
+    public Estandar(int idSocio, String nombre, String tipoSocio, String nif, Seguro seguroContratado) {
+        super(idSocio, nombre, tipoSocio);
         this.nif = nif;
         this.seguroContratado = seguroContratado;
     }

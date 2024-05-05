@@ -17,7 +17,7 @@ public class Main {
     static ExcursionController excursionController = new ExcursionController();
     public static void main(String[] args) throws ParseException {
 
-        mostrarExcursionesPorFechas();
+        crearSocio();
 
 //        Federacion fede = federacionController.porId(1);
 //        System.out.println(fede.getNombreFederacion());
