@@ -1,15 +1,15 @@
 package Modelo.Entidades;
 
-import java.text.ParseException;
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
-
+@Table(name = "excursion")
+@Entity
 public class Excursion {
+    @Id
     private int idExcursion;
     private String descripcion;
+    @Temporal(TemporalType.DATE)
     private Date fechaExcursion;
     private int duracionDias;
     private double precioInscripcion;
@@ -17,7 +17,7 @@ public class Excursion {
 
 
     // Constructor vacío
-    public Excursion() {
+    public Excursion(String descripcion, Date fechaExcursion, int duracionDias, double precioInscripcion) {
     }
 
     // Constructor con todos los atributos

@@ -1,17 +1,22 @@
 package org.example;
 
 import Controlador.FederacionController;
-import Controlador.SocioController;
+import Controlador.*;
 import Modelo.Entidades.*;
+import Modelo.Entidades.DAO.ExcursionDAO;
 import Util.Teclado;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class Main {
     static SocioController socioController = new SocioController();
-
+    static ExcursionController excursionController = new ExcursionController();
     public static void main(String[] args) {
 
-        crearSocio();
+        crearExcursion();
 
 //        Federacion fede = federacionController.porId(1);
 //        System.out.println(fede.getNombreFederacion());
@@ -53,6 +58,23 @@ public class Main {
         }
 
         socioController.crear(nombre, tipoSocio, nif, opcionSeguro, nombreFederacion, idTutor);
+    }
 
+    public static void crearExcursion() {
+        String descripcion = Teclado.pedirString("Descripción de la Excursión: ");
+        Date fechaExcursion = null;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        while (fechaExcursion == null) {
+            try {
+                 fechaExcursion = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de la excursión (formato: dd/MM/yyyy): "));
+            } catch (ParseException e) {
+                System.out.println("Formato de fecha incorrecto. Intente nuevamente.");
+            }
+        }
+        int duracionDias = Teclado.pedirInt("Ingrese la duración en días de la excursión: ");
+        double precioInscripcion = Teclado.pedirDouble("Ingrese el precio de inscripción: ");
+        System.out.println("\n");
+
+        excursionController.crear(descripcion, fechaExcursion, duracionDias, precioInscripcion);
     }
 }

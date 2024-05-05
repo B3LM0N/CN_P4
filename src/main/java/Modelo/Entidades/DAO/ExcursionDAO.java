@@ -28,4 +28,14 @@ public class ExcursionDAO {
         return excursion;
     }
 
+    public static Excursion crear(Excursion excursion){
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+
+        session.persist(excursion);
+        session.getTransaction().commit();
+        session.close();
+        System.out.println("**********");
+        return excursion;
+    }
 }
