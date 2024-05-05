@@ -21,7 +21,6 @@ public class Estandar {
 //    public Seguro seguroContratado;
 
 
-
     // Constructor vacío
     public Estandar() {
         super();

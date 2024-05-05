@@ -45,6 +45,7 @@ public class SocioController {
 
         Socio socio = new Socio();
         socio.setNombre(nombre);
+        socio.setTipoSocio("Estandar");
 
         Estandar estandar = new Estandar();
         estandar.setNif(nif);
@@ -63,6 +64,11 @@ public class SocioController {
         List<Socio> socios = (List<Socio>) socioDAO.mostrarPorTipo(tipoSocio);
         return socios;
     }
+
+//    public List<Socio>mostrarEstandar(){
+//        List<Socio> socios = (List<Socio>) socioDAO.mostrarPorTipo(tipoSocio);
+//    }
+
     public Socio borrar(int idSocio){
         Socio socio = socioDAO.porId(idSocio);
         socioDAO.borrar(socio);

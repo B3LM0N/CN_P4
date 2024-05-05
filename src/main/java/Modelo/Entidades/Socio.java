@@ -12,6 +12,18 @@ public class Socio {
 
     private String tipoSocio;
 
+    @OneToOne(mappedBy = "socio", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Federado federado;
+
+    @OneToOne(mappedBy = "socio", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Estandar estandar;
+
+    @OneToOne(mappedBy = "socio", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Infantil infantil;
+
     public int getIdSocio() {
         return idSocio;
     }
@@ -34,5 +46,29 @@ public class Socio {
 
     public void setTipoSocio(String tipoSocio) {
         this.tipoSocio = tipoSocio;
+    }
+
+    public Federado getFederado() {
+        return federado;
+    }
+
+    public void setFederado(Federado federado) {
+        this.federado = federado;
+    }
+
+    public Estandar getEstandar() {
+        return estandar;
+    }
+
+    public void setEstandar(Estandar estandar) {
+        this.estandar = estandar;
+    }
+
+    public Infantil getInfantil() {
+        return infantil;
+    }
+
+    public void setInfantil(Infantil infantil) {
+        this.infantil = infantil;
     }
 }
