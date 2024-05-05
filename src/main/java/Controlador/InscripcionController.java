@@ -3,7 +3,7 @@ package Controlador;
 import Modelo.Entidades.DAO.*;
 import Modelo.Entidades.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class InscripcionController {
 
@@ -16,8 +16,12 @@ public class InscripcionController {
         public Inscripcion porId(int id){
             return this.inscripcionDAO.porId(id);
         }
-        public void crear(int idSocio, int idExcursion, Date fechaExcursion) {
-        Inscripcion inscripcion = new Inscripcion(0, idSocio, idExcursion, fechaExcursion);
+        public void crear(int idSocio, int idExcursion, LocalDate fechaInscripcion) {
+        Inscripcion inscripcion = new Inscripcion(0, idSocio, idExcursion, fechaInscripcion);
         InscripcionDAO.crear(inscripcion);
+        }
+        public void borrar(int idInscripcion){
+                Inscripcion inscripcion = InscripcionDAO.porId(idInscripcion);
+                InscripcionDAO.borrar(inscripcion);
         }
 }

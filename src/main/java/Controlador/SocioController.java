@@ -5,7 +5,6 @@ import Modelo.Entidades.*;
 import Util.Teclado;
 
 public class SocioController {
-
     SocioDAO socioDAO;
     SegurosDAO segurosDAO;
     FederacionDAO federacionDAO;
@@ -14,10 +13,11 @@ public class SocioController {
         this.socioDAO = new SocioDAO();
         this.segurosDAO = new SegurosDAO();
         this.federacionDAO = new FederacionDAO();
+
     }
 
     public Socio porId(int id){
-        return this.socioDAO.porId(id);
+        return socioDAO.porId(id);
     }
 
 

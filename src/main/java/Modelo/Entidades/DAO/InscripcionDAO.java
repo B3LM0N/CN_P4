@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class InscripcionDAO {
 
-    public Inscripcion porId(int id){
+    public static Inscripcion porId(int id){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 
@@ -45,6 +45,5 @@ public class InscripcionDAO {
         session.close();
         return inscripcion;
     }
-    Session session = HibernateUtil.getSession();
 
 }

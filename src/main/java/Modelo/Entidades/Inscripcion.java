@@ -1,10 +1,8 @@
 package Modelo.Entidades;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
 
 public class Inscripcion {
     private int idInscripcion;
@@ -15,7 +13,7 @@ public class Inscripcion {
 
 
     // Constructor vacío
-    public Inscripcion() {
+    public Inscripcion(int idInscripcion, int idSocio, int idExcursion, LocalDate fechaInscripcion) {
     }
 
     // Constructor con todos los atributos
