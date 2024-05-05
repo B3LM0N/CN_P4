@@ -3,18 +3,21 @@ package Modelo.Entidades;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "tipo_socio")
+@Table(name = "socio")
 public class Socio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idSocio")
     private int idSocio;
-
     private String nombre;
-
-    @Column(name = "tipo_socio")
     private String tipoSocio;
+
+    @OneToOne(mappedBy = "Estandar", cascade = CascadeType.ALL)
+    private Estandar estandar;
+    @OneToOne(mappedBy = "Federado", cascade = CascadeType.ALL)
+    private Federado federado;
+    @OneToOne(mappedBy = "Infantil", cascade = CascadeType.ALL)
+    private Infantil infantil;
 
     // Constructor vacío
     public Socio() {
