@@ -5,7 +5,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-public class Federado extends Socio {
+public class Federado {
+    @Id
+    private int idSocio;
 
     private String nif;
 
@@ -21,7 +23,7 @@ public class Federado extends Socio {
 
     // Constructor con todos los atributos
     public Federado(int idSocio, String nif,Federacion federacion) {
-        super(idSocio, nif, String.valueOf(federacion));
+//        super(idSocio, nif, String.valueOf(federacion));
         this.federacion = federacion;
         this.nif = nif;
     }
@@ -42,11 +44,19 @@ public class Federado extends Socio {
         this.federacion = federacion;
     }
 
-    // Método toString para imprimir los detalles del socio federado
-    @Override
-    public String toString() {
-        return "Socio Federado con id número: " +getIdSocio() + ", llamado: " +  getNombre() + ", con NIF: " + nif + ".\n" +
-                "Pertenece a la federación: " +  federacion.getNombreFederacion() + ".";
+    public int getIdSocio() {
+        return idSocio;
+    }
 
+    public void setIdSocio(int idSocio) {
+        this.idSocio = idSocio;
+    }
+
+    public Socio getSocio() {
+        return socio;
+    }
+
+    public void setSocio(Socio socio) {
+        this.socio = socio;
     }
 }

@@ -4,7 +4,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "estandar")
-public class Estandar extends Socio {
+public class Estandar {
+
+    @Id
+    public int idSocio;
 
     @Column(name = "nif") // Aquí se mapea el atributo nif en la tabla Estandar
     public String nif;
@@ -13,9 +16,9 @@ public class Estandar extends Socio {
     @JoinColumn(name = "idSocio")
     public Socio socio;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "seguroContratado_idSeguro")
-    public Seguro seguroContratado;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "seguroContratado_idSeguro")
+//    public Seguro seguroContratado;
 
 
 
@@ -24,10 +27,10 @@ public class Estandar extends Socio {
         super();
     }
     // Constructor con todos los atributos
-    public Estandar(int idSocio, String nombre, String tipoSocio, String nif, Seguro seguroContratado) {
-        super(idSocio, nombre, tipoSocio);
+    public Estandar(String nif, Seguro seguroContratado) {
+//        super(idSocio, nombre, tipoSocio);
         this.nif = nif;
-        this.seguroContratado = seguroContratado;
+//        this.seguroContratado = seguroContratado;
     }
 
     // Getter y setter para el NIF
@@ -39,17 +42,27 @@ public class Estandar extends Socio {
         this.nif = nif;
     }
 
-    public Seguro getSeguroContratado() {
-        return seguroContratado;
+//    public Seguro getSeguroContratado() {
+//        return seguroContratado;
+//    }
+//
+//    public void setSeguroContratado(Seguro seguroContratado) {
+//        this.seguroContratado = seguroContratado;
+//    }
+
+    public Socio getSocio() {
+        return socio;
     }
 
-    public void setSeguroContratado(Seguro seguroContratado) {
-        this.seguroContratado = seguroContratado;
+    public void setSocio(Socio socio) {
+        this.socio = socio;
     }
 
-    @Override
-    public String toString() {
-        return "Socio Estandar con id número: " + getIdSocio() + ", llamado: " + getNombre() + ", con NIF: " + nif + ".\n" +
-                "Ha elegido el tipo de seguro: " + seguroContratado.getSeguroContratado() + ".";
+    public int getIdSocio() {
+        return idSocio;
+    }
+
+    public void setIdSocio(int idSocio) {
+        this.idSocio = idSocio;
     }
 }

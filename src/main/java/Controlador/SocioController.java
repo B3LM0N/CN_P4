@@ -43,12 +43,16 @@ public class SocioController {
     private Socio crearEstandar(String nombre, String nif, int opcionSeguro) {
         Seguro seguroElegido = new Seguro(); // Supongo que aquí obtendrías el seguro seleccionado de alguna manera
 
-        Estandar estandar = new Estandar();
-        estandar.setNombre(nombre);
-        estandar.setNif(nif);
-        estandar.setSeguroContratado(seguroElegido);
+        Socio socio = new Socio();
+        socio.setNombre(nombre);
 
-        return estandarDAO.crear(estandar);
+        Estandar estandar = new Estandar();
+        estandar.setNif(nif);
+//        estandar.setSeguroContratado(seguroElegido);
+        Socio nuevo = socioDAO.crear(socio);
+        estandar.setIdSocio(nuevo.getIdSocio());
+        estandarDAO.crear(estandar);
+        return nuevo;
     }
 
     public List<Socio> mostrar(){

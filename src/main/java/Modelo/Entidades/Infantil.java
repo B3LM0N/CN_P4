@@ -6,7 +6,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "infantil")
-public class Infantil extends Socio {
+public class Infantil {
+
+    @Id
+    private int idSocio;
+
     private int idTutor;
     @OneToOne
     @JoinColumn(name = "idSocio")
@@ -17,7 +21,7 @@ public class Infantil extends Socio {
     }
     // Constructor con todos los atributos
     public Infantil(int idSocio, String nombre, int idTutor) {
-        super(idSocio, nombre, "Infantil");
+//        super(idSocio, nombre, "Infantil");
         this.idTutor = idTutor;
     }
 
@@ -29,11 +33,19 @@ public class Infantil extends Socio {
         this.idTutor = idTutor;
     }
 
-    // Método toString para imprimir los detalles del socio infantil
-    @Override
-    public String toString() {
-        return "Socio Infantil con id número: " + getIdSocio() + ", llamado: " +  getNombre() + ".\n" +
-                "Tiene un tutor asociado con el id número " + idTutor +".";
+    public int getIdSocio() {
+        return idSocio;
+    }
 
+    public void setIdSocio(int idSocio) {
+        this.idSocio = idSocio;
+    }
+
+    public Socio getSocio() {
+        return socio;
+    }
+
+    public void setSocio(Socio socio) {
+        this.socio = socio;
     }
 }
