@@ -9,6 +9,9 @@ public class Federado extends Socio {
 
     private String nif;
 
+    @OneToOne
+    @JoinColumn(name = "idSocio")
+    public Socio socio;
     @ManyToOne
     public Federacion federacion;
 

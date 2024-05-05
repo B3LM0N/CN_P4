@@ -5,8 +5,13 @@ import javax.persistence.Table;
 
 
 @Entity
+@Table(name = "infantil")
 public class Infantil extends Socio {
     private int idTutor;
+    @OneToOne
+    @JoinColumn(name = "idSocio")
+    public Socio socio;
+
     // Constructor vacío
     public Infantil() {
     }

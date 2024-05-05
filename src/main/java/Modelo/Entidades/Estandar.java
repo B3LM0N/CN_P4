@@ -5,12 +5,19 @@ import javax.persistence.*;
 @Entity
 @Table(name = "estandar")
 public class Estandar extends Socio {
+
     @Column(name = "nif") // Aquí se mapea el atributo nif en la tabla Estandar
-    private String nif;
+    public String nif;
+
+    @OneToOne
+    @JoinColumn(name = "idSocio")
+    public Socio socio;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "seguroContratado_idSeguro")
-    private Seguro seguroContratado;
+    public Seguro seguroContratado;
+
+
 
     // Constructor vacío
     public Estandar() {
