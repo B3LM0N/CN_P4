@@ -1,8 +1,16 @@
 package Modelo.Entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Table(name = "federado")
+@Entity
 public class Federado extends Socio {
+
     private String nif;
+
+    @ManyToOne
     public Federacion federacion;
 
 

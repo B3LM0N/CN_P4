@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Estandar extends Socio {
     private String nif;
 
-    @ManyToOne(targetEntity=Seguro.class, fetch= FetchType.EAGER)
+    @ManyToOne
     private Seguro seguroContratado;
 
     // Constructor vacío
@@ -39,12 +39,10 @@ public class Estandar extends Socio {
         this.seguroContratado = seguroContratado;
     }
 
+
     @Override
     public String toString() {
-        return "Estandar{" +
-                "nif='" + nif + '\'' +
-                ", seguroContratado=" + seguroContratado +
-                ", tipoSocio='" + tipoSocio + '\'' +
-                '}';
+        return "Socio Estandar con id número: " + getIdSocio() + ", llamado: " +  getNombre() + ", con NIF: " + nif + ".\n" +
+                "Ha elegido el tipo de seguro: " +  seguroContratado.getSeguroContratado() + ".";
     }
 }

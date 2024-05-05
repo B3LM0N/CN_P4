@@ -27,6 +27,7 @@ public class SocioDAO {
         session.close();
         return socio;
     }
+
     public Estandar crearEstandar(Estandar estandar){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();

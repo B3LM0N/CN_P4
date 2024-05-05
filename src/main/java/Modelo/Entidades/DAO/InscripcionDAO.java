@@ -28,6 +28,7 @@ public class InscripcionDAO {
         session.close();
         return inscripcion;
     }
+
     public static Inscripcion crear(Inscripcion inscripcion){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -37,6 +38,7 @@ public class InscripcionDAO {
         session.close();
         return inscripcion;
     }
+
     public static Inscripcion borrar(Inscripcion inscripcion){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -46,6 +48,7 @@ public class InscripcionDAO {
         session.close();
         return inscripcion;
     }
+
     public static Inscripcion mostrar(){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -55,6 +58,7 @@ public class InscripcionDAO {
         session.close();
         return (Inscripcion) inscripciones;
     }
+
     public static Inscripcion mostrarPorSocio(int idSocio){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -65,6 +69,7 @@ public class InscripcionDAO {
         session.close();
         return (Inscripcion) inscripciones;
     }
+
     public static Inscripcion mostrarPorFecha(Date fechaInicio, Date fechaFin){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -76,6 +81,7 @@ public class InscripcionDAO {
         session.close();
         return (Inscripcion) inscripciones;
     }
+
     public static Inscripcion mostrarPorSocioYFecha(int idSocio, Date fechaInicio, Date fechaFin){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();

@@ -5,14 +5,17 @@ import javax.persistence.Id;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Socio {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSocio;
 
     private String nombre;
-    public String tipoSocio;
+
+    @Transient // No se persistirá en la base de datos
+    private String tipoSocio;
 
     // Constructor vacío
     public Socio() {
