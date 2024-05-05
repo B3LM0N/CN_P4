@@ -1,9 +1,9 @@
 package Modelo.Entidades;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.persistence.Table;
 
-@Table(name = "infantil")
+
 @Entity
 public class Infantil extends Socio {
     private int idTutor;

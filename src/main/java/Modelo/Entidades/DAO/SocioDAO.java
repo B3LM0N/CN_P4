@@ -20,42 +20,34 @@ public class SocioDAO {
         return socio;
     }
 
-    public Socio crear(Socio socio){
+    public Socio crear(Socio socio) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-
         session.persist(socio);
         session.getTransaction().commit();
         session.close();
         return socio;
     }
 
-    public Estandar crearEstandar(Estandar estandar){
-        Session session = HibernateUtil.getSession();
-        session.beginTransaction();
 
-        session.persist(estandar);
-        session.getTransaction().commit();
-        session.close();
-        return estandar;
-    }
-    public Socio mostrar(){
+    public List<Socio> mostrar(){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
         Query<Socio> query = session.createQuery("FROM Socio", Socio.class);
         List<Socio> socios = query.getResultList();
         session.getTransaction().commit();
         session.close();
-        return (Socio) socios;
+        return socios;
     }
-    public Socio mostrarPorTipo(String tipoSocio){
+    public List<Socio> mostrarPorTipo(String tipoSocio) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-        Query<Socio> query = session.createQuery("FROM Socio where tipoSocio = :tipoSocio", Socio.class);
+        Query<Socio> query = session.createQuery("FROM Socio WHERE tipoSocio = :tipoSocio", Socio.class);
+        query.setParameter("tipoSocio", tipoSocio);
         List<Socio> socios = query.getResultList();
         session.getTransaction().commit();
         session.close();
-        return (Socio) socios;
+        return socios;
     }
     public Socio borrar(Socio socio) {
         Session session = HibernateUtil.getSession();

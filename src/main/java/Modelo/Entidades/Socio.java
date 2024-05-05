@@ -1,18 +1,19 @@
 package Modelo.Entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "tipo_socio")
 public class Socio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idSocio")
     private int idSocio;
+
     private String nombre;
 
-    @Transient // No se persistirá en la base de datos
+    @Column(name = "tipo_socio")
     private String tipoSocio;
 
     // Constructor vacío
@@ -30,18 +31,23 @@ public class Socio {
     public int getIdSocio() {
         return idSocio;
     }
+
     public void setIdSocio(int idSocio) {
         this.idSocio = idSocio;
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public String getTipoSocio() {
         return tipoSocio;
     }
+
     public void setTipoSocio(String tipoSocio) {
         this.tipoSocio = tipoSocio;
     }

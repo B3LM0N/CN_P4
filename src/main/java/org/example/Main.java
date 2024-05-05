@@ -15,11 +15,16 @@ import java.util.List;
 
 
 public class Main {
+
     static SocioController socioController = new SocioController();
     static ExcursionController excursionController = new ExcursionController();
     static InscripcionController inscripcionController = new InscripcionController();
     static SegurosController segurosController = new SegurosController();
     static FederacionController federacionController = new FederacionController();
+
+    public static void main(String[] args) throws ParseException {
+        menuPrincipal();
+    }
 
     public static void menuPrincipal() throws ParseException{
         boolean finalizarPrograma = false;
@@ -83,7 +88,8 @@ public class Main {
         }
 
     }
-            public static void crearExcursion() {
+
+    public static void crearExcursion() {
         String descripcion = Teclado.pedirString("Descripción de la Excursión: ");
         Date fechaExcursion = null;
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -100,7 +106,8 @@ public class Main {
 
         excursionController.crear(descripcion, fechaExcursion, duracionDias, precioInscripcion);
     }
-            public static void mostrarExcursionesPorFechas() throws ParseException {
+
+    public static void mostrarExcursionesPorFechas() throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaInicio = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de inicio (dd/MM/yyyy): "));
         Date fechaFin = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de fin (dd/MM/yyyy): "));
@@ -112,7 +119,8 @@ public class Main {
         System.out.println(excursiones);
 
     }
-            public static void borrarExcursion() {
+
+    public static void borrarExcursion() {
         int idExcursion = Teclado.pedirInt("\nInserta el ID de la Excursion que quieres eliminar: ");
         if (excursionController.porId(idExcursion) != null) {
             excursionController.borrar(idExcursion);
@@ -121,6 +129,7 @@ public class Main {
             System.out.println("Hubo un error al eliminar la excursión.");
         }
     }
+
     private static void menuSocios(){
         boolean salirMenuSocios = false;
         System.out.println("\n--------------------------------------------------");
@@ -185,7 +194,8 @@ public class Main {
         }
 
     }
-            public static void crearSocio(){
+
+    public static void crearSocio(){
 
         String nombre = Teclado.pedirString("Ingrese el nombre del nuevo socio: ");
         System.out.println("Seleccione el tipo de socio:");
@@ -207,35 +217,38 @@ public class Main {
             case 3:
                 idTutor = Teclado.pedirInt("Elige el ID del tutor: ");
 
-                // TODO: para luego jeje
-//                if (tutor != null && Teclado.pedirInt("El tutor seleccionado es: " + tutor.getNombre() + " (ID: " + tutor.getIdSocio() + ")\n1. Confirmar tutor\n2. Cancelar\nIngrese la opción deseada: ") == 1) {
-//                    nuevoSocio = new Infantil(0, nombre, tutor.getIdSocio());
-//                } else {
-//                    System.out.println("Creación de socio infantil cancelada o no se encontró un tutor con el ID proporcionado.");
-//                }
                 break;
             default:
                 System.out.println("Opción no válida. Por favor, reintente.");
 
         }
+        Socio socio = socioController.crear(nombre, tipoSocio, nif, opcionSeguro, nombreFederacion, idTutor);
 
-        socioController.crear(nombre, tipoSocio, nif, opcionSeguro, nombreFederacion, idTutor);
     }
-            public static void modificarSeguro(){}
-            public static void borrarSocio(){
-                int idSocio = Teclado.pedirInt("\nInserta el ID del socio que quieres eliminar: ");
-                if (socioController.porId(idSocio) != null) {
-                    socioController.borrar(idSocio);
-                    System.out.println("\nEl socio ha sido eliminado con exito.");
-                } else {
-                    System.out.println("\nHubo un error al eliminar el socio.");
-                }
-            }                                       /* ACTUALIZAR */
-            public static void mostrarSocio(){
-                List<Socio> socios = socioController.mostrar();
-                System.out.println(socios);
-            }
-            public static void mostrarSocioPorTipo(){
+    // TODO: para luego jeje
+//                if (tutor != null && Teclado.pedirInt("El tutor seleccionado es: " + tutor.getNombre() + " (ID: " + tutor.getIdSocio() + ")\n1. Confirmar tutor\n2. Cancelar\nIngrese la opción deseada: ") == 1) {
+//                    nuevoSocio = new Infantil(0, nombre, tutor.getIdSocio());
+//                } else {
+//                    System.out.println("Creación de socio infantil cancelada o no se encontró un tutor con el ID proporcionado.");
+//                }
+    public static void modificarSeguro(){}
+
+    public static void borrarSocio(){
+        int idSocio = Teclado.pedirInt("\nInserta el ID del socio que quieres eliminar: ");
+        if (socioController.porId(idSocio) != null) {
+            socioController.borrar(idSocio);
+            System.out.println("\nEl socio ha sido eliminado con exito.");
+        } else {
+            System.out.println("\nHubo un error al eliminar el socio.");
+        }
+    }
+
+    public static void mostrarSocio(){
+        List<Socio> socios = socioController.mostrar();
+        System.out.println(socios);
+    }
+
+    public static void mostrarSocioPorTipo(){
                 System.out.println("\nIndica que tipo de socio deseas filtrar: ");
                 System.out.println("\n1. Socio Estandar");
                 System.out.println("\n2. Socio Federado");
@@ -259,8 +272,10 @@ public class Main {
                 }
                 List<Socio> socios = socioController.mostrarPorTipo(tipoSocio);
                 System.out.println(socios);
-            }                              /* ACTUALIZAR */
-            public static void mostrarFacutraMensual(){}                              /*  FALTA  */
+            }
+
+    public static void mostrarFacutraMensual(){}
+
     private static void menuInscripciones() throws ParseException {
         boolean salirMenuInscripciones = false;
         System.out.println("\n--------------------------------------------------");
@@ -325,7 +340,8 @@ public class Main {
 
 
     }
-            public static void crearInscripcion() throws ParseException {
+
+    public static void crearInscripcion() throws ParseException {
         int idSocio = Teclado.pedirInt("\nIntroduce el ID sel Socio que va a realizar la inscripcion: ");
         socioController.porId(idSocio);
         if (socioController.porId(idSocio) != null) {
@@ -349,40 +365,45 @@ public class Main {
             }
 
         }
+    }
+
+    public static void mostrarInscripcion(){
+        List<Inscripcion> inscripciones = inscripcionController.mostrar();
+        System.out.println(inscripciones);
+    }
+
+    public static void mostrarInscripcionPorSocio(){
+        int idSocio = Teclado.pedirInt("\nIntroduce el ID del socio: ");
+        List<Inscripcion> inscripciones = inscripcionController.mostrarPorSocio(idSocio);
+        System.out.println(inscripciones);
+    }
+
+    public static void mostrarInscripcionPorFecha() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaInicio = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de inicio (dd/MM/yyyy): "));
+        Date fechaFin = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de fin (dd/MM/yyyy): "));
+        if (fechaInicio.after(fechaFin)) {
+            System.out.println("La fecha de inicio no puede ser posterior a la fecha de fin.");
+            return;
         }
-            public static void mostrarInscripcion(){
-                List<Inscripcion> inscripciones = inscripcionController.mostrar();
-                System.out.println(inscripciones);
-            }
-            public static void mostrarInscripcionPorSocio(){
-            int idSocio = Teclado.pedirInt("\nIntroduce el ID del socio: ");
-                List<Inscripcion> inscripciones = inscripcionController.mostrarPorSocio(idSocio);
-                System.out.println(inscripciones);
-            }
-            public static void mostrarInscripcionPorFecha() throws ParseException {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                Date fechaInicio = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de inicio (dd/MM/yyyy): "));
-                Date fechaFin = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de fin (dd/MM/yyyy): "));
-                if (fechaInicio.after(fechaFin)) {
-                    System.out.println("La fecha de inicio no puede ser posterior a la fecha de fin.");
-                    return;
-                }
-                List<Inscripcion> inscripciones = inscripcionController.mostrarPorFecha(fechaInicio, fechaFin);
-                System.out.println(inscripciones);
-            }
-            public static void mostrarInscripcionPorSocioYFecha() throws ParseException {
-                int idSocio = Teclado.pedirInt("\nIntroduce el ID del socio para encontrar inscripciones: ");
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                Date fechaInicio = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de inicio (dd/MM/yyyy): "));
-                Date fechaFin = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de fin (dd/MM/yyyy): "));
-                if (fechaInicio.after(fechaFin)) {
-                    System.out.println("La fecha de inicio no puede ser posterior a la fecha de fin.");
-                    return;
-                }
-                List<Inscripcion> inscripciones = inscripcionController.mostrarPorSocioYFecha(idSocio, fechaInicio, fechaFin);
-                System.out.println(inscripciones);
-            }
-            public static void borrarInscripcion(){
+        List<Inscripcion> inscripciones = inscripcionController.mostrarPorFecha(fechaInicio, fechaFin);
+        System.out.println(inscripciones);
+    }
+
+    public static void mostrarInscripcionPorSocioYFecha() throws ParseException {
+        int idSocio = Teclado.pedirInt("\nIntroduce el ID del socio para encontrar inscripciones: ");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaInicio = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de inicio (dd/MM/yyyy): "));
+        Date fechaFin = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de fin (dd/MM/yyyy): "));
+        if (fechaInicio.after(fechaFin)) {
+            System.out.println("La fecha de inicio no puede ser posterior a la fecha de fin.");
+            return;
+        }
+        List<Inscripcion> inscripciones = inscripcionController.mostrarPorSocioYFecha(idSocio, fechaInicio, fechaFin);
+        System.out.println(inscripciones);
+    }
+
+    public static void borrarInscripcion() {
         int idInscripcion = Teclado.pedirInt("\nIntroduce el ID de la Inscripcion que desea eliminar: ");
         if (inscripcionController.porId(idInscripcion) != null) {
             inscripcionController.borrar(idInscripcion);
@@ -390,7 +411,7 @@ public class Main {
         } else {
             System.out.println("\nHa habido un error al eliminar la inscripcion.");
         }
-}
+    }
 
 }
 

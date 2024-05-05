@@ -2,18 +2,20 @@ package Modelo.Entidades;
 
 import javax.persistence.*;
 
-@Table(name = "Estandar")
 @Entity
+@Table(name = "estandar")
 public class Estandar extends Socio {
+    @Column(name = "nif") // Aquí se mapea el atributo nif en la tabla Estandar
     private String nif;
 
-    @ManyToOne(targetEntity=Seguro.class, fetch= FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "seguroContratado_idSeguro")
     private Seguro seguroContratado;
 
     // Constructor vacío
-    public Estandar(String nombre, String estandar, String nif, Seguro seguroElegido, int idSocio) {
+    public Estandar() {
+        super();
     }
-
     // Constructor con todos los atributos
     public Estandar(int idSocio, String nombre, String tipoSocio, String nif, Seguro seguroContratado) {
         super(idSocio, nombre, tipoSocio);
@@ -22,7 +24,6 @@ public class Estandar extends Socio {
     }
 
     // Getter y setter para el NIF
-
     public String getNif() {
         return nif;
     }
@@ -39,10 +40,9 @@ public class Estandar extends Socio {
         this.seguroContratado = seguroContratado;
     }
 
-
     @Override
     public String toString() {
-        return "Socio Estandar con id número: " + getIdSocio() + ", llamado: " +  getNombre() + ", con NIF: " + nif + ".\n" +
-                "Ha elegido el tipo de seguro: " +  seguroContratado.getSeguroContratado() + ".";
+        return "Socio Estandar con id número: " + getIdSocio() + ", llamado: " + getNombre() + ", con NIF: " + nif + ".\n" +
+                "Ha elegido el tipo de seguro: " + seguroContratado.getSeguroContratado() + ".";
     }
 }

@@ -9,39 +9,48 @@ public class SocioController {
     SocioDAO socioDAO;
     SegurosDAO segurosDAO;
     FederacionDAO federacionDAO;
+    EstandarDAO estandarDAO;
+
     public SocioController(){
         this.socioDAO = new SocioDAO();
         this.segurosDAO = new SegurosDAO();
         this.federacionDAO = new FederacionDAO();
+        this.estandarDAO = new EstandarDAO();
     }
     public Socio porId(int id){
         return socioDAO.porId(id);
     }
-    public Socio crear(String nombre, int tipoSocio, String nif, int opcionSeguro, String nombreFederacion, int idTutor){
-        Seguro seguroElegido = null;
-        Socio socio = new Socio();
+    public Socio crear(String nombre, int tipoSocio, String nif, int opcionSeguro, String nombreFederacion, int idTutor) {
+        Socio socio = null;
+
         switch (tipoSocio) {
             case 1:
-                seguroElegido = segurosDAO.porId(opcionSeguro);
-                socio = new Socio(0, nombre, "Estandar");
-                int idSocio = socio.getIdSocio();
-                System.out.println(socio);
-                socio = socioDAO.crear(socio);
-                Estandar estandar = new Estandar(nombre,"Estandar", nif, seguroElegido, idSocio);
-                estandar = socioDAO.crearEstandar(estandar);
+                socio = crearEstandar(nombre, nif, opcionSeguro);
                 break;
             case 2:
-//                Federacion federacion = federacionDAO.obtenerFederacionPorNombre(nombreFederacion);
-//                nuevoSocio = new Federado(0, nombre, federacion, nif);
+                // Crear socio federado
                 break;
             case 3:
-//                Socio tutor = socioDAO.buscarSocioPorId(idTutor);
+                // Crear socio infantil
                 break;
             default:
                 System.out.println("Opción no válida. Por favor, reintente.");
         }
+
         return socio;
     }
+
+    private Socio crearEstandar(String nombre, String nif, int opcionSeguro) {
+        Seguro seguroElegido = new Seguro(); // Supongo que aquí obtendrías el seguro seleccionado de alguna manera
+
+        Estandar estandar = new Estandar();
+        estandar.setNombre(nombre);
+        estandar.setNif(nif);
+        estandar.setSeguroContratado(seguroElegido);
+
+        return estandarDAO.crear(estandar);
+    }
+
     public List<Socio> mostrar(){
         List<Socio> socios = (List<Socio>) socioDAO.mostrar();
         return socios;
