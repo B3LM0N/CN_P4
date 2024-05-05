@@ -4,6 +4,7 @@ import Modelo.Entidades.DAO.*;
 import Modelo.Entidades.*;
 
 import java.util.Date;
+import java.util.List;
 
 public class ExcursionController {
 
@@ -14,16 +15,21 @@ public class ExcursionController {
     }
 
     public Excursion porId(int id){
-        return this.excursionDAO.porId(id);
+        return ExcursionDAO.porId(id);
     }
 
-    public Excursion crear(String descripcion, Date fechaExcursion,int duracionDias,double precioInscripcion) {
+    public void crear(String descripcion, Date fechaExcursion, int duracionDias, double precioInscripcion) {
         Excursion excursion = new Excursion(0, descripcion,fechaExcursion, duracionDias, precioInscripcion);
-        excursion = ExcursionDAO.crear(excursion);
-        return excursion;
+        ExcursionDAO.crear(excursion);
     }
 
-
-
+    public void borrar(int idExcursion) {
+        Excursion excursion = ExcursionDAO.porId(idExcursion);
+        ExcursionDAO.borrar(excursion);
+    }
+    public List<Excursion> mostrar(Date fechaInicio, Date fechaFin) {
+       List<Excursion> excursiones = ExcursionDAO.mostrarPorFechas(fechaInicio, fechaFin);
+        return excursiones;
+    }
 }
 
