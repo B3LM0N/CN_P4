@@ -49,55 +49,42 @@ public class InscripcionDAO {
     public static Inscripcion mostrar(){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-        // Crear una consulta para recuperar todas las inscripciones
         Query<Inscripcion> query = session.createQuery("FROM Inscripcion", Inscripcion.class);
         List<Inscripcion> inscripciones = query.getResultList();
-        // Commit de la transacción
         session.getTransaction().commit();
-        // Cerrar la sesión
         session.close();
         return (Inscripcion) inscripciones;
     }
     public static Inscripcion mostrarPorSocio(int idSocio){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-        // Crear una consulta para recuperar todos los productos
         Query<Inscripcion> query = session.createQuery("from Inscripcion where id = :id", Inscripcion.class);
         query.setParameter("id", idSocio);
-        // Ejecutar la consulta y obtener la lista de productos
         List<Inscripcion> inscripciones = query.getResultList();
-        // Commit de la transacción
         session.getTransaction().commit();
-        // Cerrar la sesión
         session.close();
         return (Inscripcion) inscripciones;
     }
     public static Inscripcion mostrarPorFecha(Date fechaInicio, Date fechaFin){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-        // Crear una consulta para recuperar todos los productos
         Query<Inscripcion> query = session.createQuery("FROM Inscripcion WHERE fechaInscripcion BETWEEN :fechaInicio AND :fechaFin", Inscripcion.class);
         query.setParameter("fechaInicio", fechaInicio);
         query.setParameter("fechaFin", fechaFin);
         List<Inscripcion> inscripciones = query.getResultList();
-        // Commit de la transacción
         session.getTransaction().commit();
-        // Cerrar la sesión
         session.close();
         return (Inscripcion) inscripciones;
     }
     public static Inscripcion mostrarPorSocioYFecha(int idSocio, Date fechaInicio, Date fechaFin){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-        // Crear una consulta para recuperar las inscripciones de un socio entre las fechas dadas
         Query<Inscripcion> query = session.createQuery("FROM Inscripcion WHERE socio.id = :idSocio AND fechaInscripcion BETWEEN :fechaInicio AND :fechaFin", Inscripcion.class);
         query.setParameter("idSocio", idSocio);
         query.setParameter("fechaInicio", fechaInicio);
         query.setParameter("fechaFin", fechaFin);
         List<Inscripcion> inscripciones = query.getResultList();
-        // Commit de la transacción
         session.getTransaction().commit();
-        // Cerrar la sesión
         session.close();
         return (Inscripcion) inscripciones;
     }
