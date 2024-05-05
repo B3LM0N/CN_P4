@@ -1,25 +1,50 @@
 package Controlador;
+
 import Modelo.Entidades.DAO.*;
 import Modelo.Entidades.*;
 import Util.Teclado;
 
 import java.util.List;
 
+/**
+ * Clase que actúa como controlador para las operaciones relacionadas con los socios.
+ */
 public class SocioController {
+
     SocioDAO socioDAO;
     SegurosDAO segurosDAO;
     FederacionDAO federacionDAO;
     EstandarDAO estandarDAO;
 
+    /**
+     * Constructor de la clase SocioController.
+     */
     public SocioController(){
         this.socioDAO = new SocioDAO();
         this.segurosDAO = new SegurosDAO();
         this.federacionDAO = new FederacionDAO();
         this.estandarDAO = new EstandarDAO();
     }
+
+    /**
+     * Obtiene un socio por su identificador.
+     * @param id El identificador del socio.
+     * @return El socio encontrado o null si no se encuentra ninguno con ese identificador.
+     */
     public Socio porId(int id){
         return socioDAO.porId(id);
     }
+
+    /**
+     * Crea un nuevo socio.
+     * @param nombre El nombre del socio.
+     * @param tipoSocio El tipo de socio (1 para estándar, 2 para federado, 3 para infantil).
+     * @param nif El NIF del socio.
+     * @param opcionSeguro La opción seleccionada para el seguro.
+     * @param nombreFederacion El nombre de la federación para los socios federados.
+     * @param idTutor El identificador del tutor para los socios infantiles.
+     * @return El socio creado.
+     */
     public Socio crear(String nombre, int tipoSocio, String nif, int opcionSeguro, String nombreFederacion, int idTutor) {
         Socio socio = null;
 
@@ -40,6 +65,13 @@ public class SocioController {
         return socio;
     }
 
+    /**
+     * Crea un nuevo socio de tipo estándar.
+     * @param nombre El nombre del socio.
+     * @param nif El NIF del socio.
+     * @param opcionSeguro La opción seleccionada para el seguro.
+     * @return El socio estándar creado.
+     */
     private Socio crearEstandar(String nombre, String nif, int opcionSeguro) {
         Seguro seguroElegido = new Seguro(); // Supongo que aquí obtendrías el seguro seleccionado de alguna manera
 
@@ -49,26 +81,37 @@ public class SocioController {
 
         Estandar estandar = new Estandar();
         estandar.setNif(nif);
-//        estandar.setSeguroContratado(seguroElegido);
+        //estandar.setSeguroContratado(seguroElegido);
         Socio nuevo = socioDAO.crear(socio);
         estandar.setIdSocio(nuevo.getIdSocio());
         estandarDAO.crear(estandar);
         return nuevo;
     }
 
+    /**
+     * Obtiene una lista de todos los socios.
+     * @return Una lista de todos los socios en la base de datos.
+     */
     public List<Socio> mostrar(){
         List<Socio> socios = (List<Socio>) socioDAO.mostrar();
         return socios;
     }
+
+    /**
+     * Obtiene una lista de socios por tipo.
+     * @param tipoSocio El tipo de socio a filtrar.
+     * @return Una lista de socios del tipo especificado.
+     */
     public List<Socio> mostrarPorTipo(String tipoSocio){
         List<Socio> socios = (List<Socio>) socioDAO.mostrarPorTipo(tipoSocio);
         return socios;
     }
 
-//    public List<Socio>mostrarEstandar(){
-//        List<Socio> socios = (List<Socio>) socioDAO.mostrarPorTipo(tipoSocio);
-//    }
-
+    /**
+     * Borra un socio existente.
+     * @param idSocio El identificador del socio a borrar.
+     * @return El socio borrado.
+     */
     public Socio borrar(int idSocio){
         Socio socio = socioDAO.porId(idSocio);
         socioDAO.borrar(socio);
