@@ -310,16 +310,36 @@ public class Main {
         }
         }
             public static void mostrarInscripcion(){
-
+                List<Inscripcion> inscripciones = inscripcionController.mostrar();
+                System.out.println(inscripciones);
             }
             public static void mostrarInscripcionPorSocio(){
-
+            int idSocio = Teclado.pedirInt("\nIntroduce el ID del socio: ");
+                List<Inscripcion> inscripciones = inscripcionController.mostrarPorSocio(idSocio);
+                System.out.println(inscripciones);
             }
-            public static void mostrarInscripcionPorFecha(){
-
+            public static void mostrarInscripcionPorFecha() throws ParseException {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date fechaInicio = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de inicio (dd/MM/yyyy): "));
+                Date fechaFin = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de fin (dd/MM/yyyy): "));
+                if (fechaInicio.after(fechaFin)) {
+                    System.out.println("La fecha de inicio no puede ser posterior a la fecha de fin.");
+                    return;
+                }
+                List<Inscripcion> inscripciones = inscripcionController.mostrarPorFecha(fechaInicio, fechaFin);
+                System.out.println(inscripciones);
             }
-            public static void mostrarInscripcionPorSocioYFecha(){
-
+            public static void mostrarInscripcionPorSocioYFecha() throws ParseException {
+                int idSocio = Teclado.pedirInt("\nIntroduce el ID del socio para encontrar inscripciones: ");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date fechaInicio = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de inicio (dd/MM/yyyy): "));
+                Date fechaFin = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de fin (dd/MM/yyyy): "));
+                if (fechaInicio.after(fechaFin)) {
+                    System.out.println("La fecha de inicio no puede ser posterior a la fecha de fin.");
+                    return;
+                }
+                List<Inscripcion> inscripciones = inscripcionController.mostrarPorSocioYFecha(idSocio, fechaInicio, fechaFin);
+                System.out.println(inscripciones);
             }
             public static void borrarInscripcion(){
         int idInscripcion = Teclado.pedirInt("\nIntroduce el ID de la Inscripcion que desea eliminar: ");

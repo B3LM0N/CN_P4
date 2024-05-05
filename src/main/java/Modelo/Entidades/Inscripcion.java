@@ -1,13 +1,17 @@
 package Modelo.Entidades;
 
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
-
+@Table(name="inscripcion")
+@Entity
 public class Inscripcion {
+    @Id
     private int idInscripcion;
     private int idSocio;
     private int idExcursion;
+    @Temporal(TemporalType.DATE)
     private Date fechaInscripcion;
 
 
