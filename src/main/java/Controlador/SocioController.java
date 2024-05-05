@@ -21,11 +21,16 @@ public class SocioController {
         return socioDAO.porId(id);
     }
     public Socio crear(String nombre, int tipoSocio, String nif, int opcionSeguro, String nombreFederacion, int idTutor) {
-        Socio socio = null;
-
+        Socio socio = new Socio();
+        System.out.println(nombre);
+        String tipoSeguro = "Completo";
+        if (opcionSeguro == 1) {
+            tipoSeguro = "Basico";
+        } else if (opcionSeguro == 2) {
+        }
         switch (tipoSocio) {
             case 1:
-                socio = crearEstandar(nombre, nif, opcionSeguro);
+                socio = crearEstandar(nombre, nif, tipoSeguro);
                 break;
             case 2:
                 // Crear socio federado
@@ -40,14 +45,10 @@ public class SocioController {
         return socio;
     }
 
-    private Socio crearEstandar(String nombre, String nif, int opcionSeguro) {
+    private Socio crearEstandar(String nombre, String nif, String tipoSeguro) {
         Seguro seguroElegido = new Seguro(); // Supongo que aquí obtendrías el seguro seleccionado de alguna manera
 
-        Estandar estandar = new Estandar();
-        estandar.setNombre(nombre);
-        estandar.setNif(nif);
-        estandar.setSeguroContratado(seguroElegido);
-
+        Estandar estandar = new Estandar(0, nombre, "Estandar", nif, seguroElegido);
         return estandarDAO.crear(estandar);
     }
 

@@ -4,16 +4,17 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "tipo_socio")
+@DiscriminatorColumn(name = "tipoSocio")
 public class Socio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idSocio")
     private int idSocio;
 
+    @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "tipo_socio")
+    @Column(name = "tipoSocio")
     private String tipoSocio;
 
     // Constructor vacío

@@ -10,10 +10,13 @@ public class EstandarDAO extends SocioDAO {
         super();
     }
 
-    public Estandar crear(Estandar estandar) {
+    public Estandar crearEstandar(Estandar estandar) {
+        SocioDAO socioDAO = new SocioDAO();
+        socioDAO.crear(estandar); // Primero guardas el socio en la tabla Socio
+
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-        session.persist(estandar);
+        session.persist(estandar); // Luego guardas el estandar en su tabla específica
         session.getTransaction().commit();
         session.close();
         return estandar;

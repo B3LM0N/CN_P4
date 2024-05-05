@@ -224,6 +224,11 @@ public class Main {
         }
         Socio socio = socioController.crear(nombre, tipoSocio, nif, opcionSeguro, nombreFederacion, idTutor);
 
+        // Si el socio es de tipo Estandar, establece el tipo de socio después de crear la instancia
+        if (socio instanceof Estandar) {
+            Estandar estandar = (Estandar) socio;
+            estandar.setTipoSocio("Estandar");
+        }
     }
     // TODO: para luego jeje
 //                if (tutor != null && Teclado.pedirInt("El tutor seleccionado es: " + tutor.getNombre() + " (ID: " + tutor.getIdSocio() + ")\n1. Confirmar tutor\n2. Cancelar\nIngrese la opción deseada: ") == 1) {
