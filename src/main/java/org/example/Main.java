@@ -221,6 +221,11 @@ public class Main {
 
         socioController.crear(nombre, tipoSocio, nif, opcionSeguro, nombreFederacion, idTutor);
     }
+            public static void modificarSeguro(){}
+            public static void borrarSocio(){}
+            public static void mostrarSocio(){}
+            public static void mostrarSocioPorTipo(){}
+            public static void mostrarFacutraMensual(){}
     private static void menuInscripciones() throws ParseException {
         boolean salirMenuInscripciones = false;
         System.out.println("\n--------------------------------------------------");
