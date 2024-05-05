@@ -14,7 +14,6 @@ public class InscripcionController {
         public InscripcionController(){
             this.inscripcionDAO = new InscripcionDAO();
         }
-
         public Inscripcion porId(int id){
             return this.inscripcionDAO.porId(id);
         }

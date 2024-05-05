@@ -7,11 +7,9 @@ import javax.persistence.*;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Socio {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSocio;
-
     private String nombre;
 
     @Transient // No se persistirá en la base de datos
@@ -32,27 +30,21 @@ public class Socio {
     public int getIdSocio() {
         return idSocio;
     }
-
     public void setIdSocio(int idSocio) {
         this.idSocio = idSocio;
     }
-
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     public String getTipoSocio() {
         return tipoSocio;
     }
-
     public void setTipoSocio(String tipoSocio) {
         this.tipoSocio = tipoSocio;
     }
-
 
     // Método toString para imprimir los detalles del socio
     @Override

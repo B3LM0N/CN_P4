@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Estandar extends Socio {
     private String nif;
 
-    @ManyToOne
+    @ManyToOne(targetEntity=Seguro.class, fetch= FetchType.EAGER)
     private Seguro seguroContratado;
 
     // Constructor vacío
