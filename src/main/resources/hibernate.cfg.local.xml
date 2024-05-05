@@ -19,13 +19,13 @@
         <property name="hibernate.format_sql">true</property>
 
         <!-- Ubicación de las clases de entidad -->
-<!--        <mapping class="Modelo.Entidades.Estandar"/>-->
-<!--        <mapping class="Modelo.Entidades.Excursion"/>-->
+        <mapping class="Modelo.Entidades.Estandar"/>
+        <mapping class="Modelo.Entidades.Excursion"/>
         <mapping class="Modelo.Entidades.Federacion"/>
-<!--        <mapping class="Modelo.Entidades.Federado"/>-->
-<!--        <mapping class="Modelo.Entidades.Infantil"/>-->
-<!--        <mapping class="Modelo.Entidades.Inscripcion"/>-->
-<!--        <mapping class="Modelo.Entidades.Seguro"/>-->
-<!--        <mapping class="Modelo.Entidades.Socio"/>-->
+        <mapping class="Modelo.Entidades.Federado"/>
+        <mapping class="Modelo.Entidades.Infantil"/>
+        <mapping class="Modelo.Entidades.Inscripcion"/>
+        <mapping class="Modelo.Entidades.Seguro"/>
+        <mapping class="Modelo.Entidades.Socio"/>
     </session-factory>
 </hibernate-configuration>
