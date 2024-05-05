@@ -15,7 +15,9 @@ public class Excursion {
     private double precioInscripcion;
 
 
+    public Excursion(){
 
+    }
     // Constructor vacío
     public Excursion(String descripcion, Date fechaExcursion, int duracionDias, double precioInscripcion) {
     }

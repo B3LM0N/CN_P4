@@ -5,10 +5,13 @@ import Util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.util.Date;
+import java.util.List;
+
 public class ExcursionDAO {
 
     /* */
-    public Excursion porId(int id){
+    public static Excursion porId(int id){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 
@@ -35,7 +38,33 @@ public class ExcursionDAO {
         session.persist(excursion);
         session.getTransaction().commit();
         session.close();
-        System.out.println("**********");
         return excursion;
+    }
+
+    public static Excursion borrar(Excursion excursion){
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+
+        session.delete(excursion);
+        session.getTransaction().commit();
+        session.close();
+        return excursion;
+    }
+
+    public static List<Excursion> mostrarPorFechas(Date fechaInicio, Date fechaFin){
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+
+        // Crear una consulta para recuperar todos los productos
+        Query<Excursion> query = session.createQuery("FROM Excursion WHERE fechaExcursion BETWEEN :fechaInicio AND :fechaFin", Excursion.class);
+        query.setParameter("fechaInicio", fechaInicio);
+        query.setParameter("fechaFin", fechaFin);
+        List<Excursion> excursiones = query.getResultList();
+        // Commit de la transacción
+        session.getTransaction().commit();
+        // Cerrar la sesión
+        session.close();
+
+        return excursiones;
     }
 }

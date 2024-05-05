@@ -9,14 +9,15 @@ import Util.Teclado;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 
 public class Main {
     static SocioController socioController = new SocioController();
     static ExcursionController excursionController = new ExcursionController();
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
-        crearExcursion();
+        mostrarExcursionesPorFechas();
 
 //        Federacion fede = federacionController.porId(1);
 //        System.out.println(fede.getNombreFederacion());
@@ -77,4 +78,27 @@ public class Main {
 
         excursionController.crear(descripcion, fechaExcursion, duracionDias, precioInscripcion);
     }
+
+    public static void borrarExcursion() {
+        int idExcursion = Teclado.pedirInt("Inserta el ID de la Excursion que quieres eliminar:\n");
+        if (excursionController.porId(idExcursion) != null) {
+            excursionController.borrar(idExcursion);
+            System.out.println("La excursión ha sido eliminada exitosamente.");
+        } else {
+            System.out.println("Hubo un error al eliminar la excursión.");
+        }
+    }
+    public static void mostrarExcursionesPorFechas() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaInicio = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de inicio (dd/MM/yyyy): "));
+        Date fechaFin = dateFormat.parse(Teclado.pedirString("Ingrese la fecha de fin (dd/MM/yyyy): "));
+        if (fechaInicio.after(fechaFin)) {
+            System.out.println("La fecha de inicio no puede ser posterior a la fecha de fin.");
+            return;
+        }
+        List<Excursion> excursiones = excursionController.mostrar(fechaInicio, fechaFin);
+        System.out.println(excursiones);
+
+    }
+
 }
