@@ -1,13 +1,12 @@
 package Modelo.Entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="federacion")
 public class Federacion {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idFederacion;
     private String nombreFederacion;
 

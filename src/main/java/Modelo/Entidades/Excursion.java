@@ -7,6 +7,7 @@ import java.util.Date;
 @Entity
 public class Excursion {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idExcursion;
     private String descripcion;
     @Temporal(TemporalType.DATE)
