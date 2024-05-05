@@ -10,7 +10,7 @@ import java.util.List;
 
 public class InscripcionDAO {
 
-    public static Inscripcion porId(int id){
+    public Inscripcion porId(int id){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 
@@ -29,7 +29,7 @@ public class InscripcionDAO {
         return inscripcion;
     }
 
-    public static Inscripcion crear(Inscripcion inscripcion){
+    public Inscripcion crear(Inscripcion inscripcion){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 
@@ -39,7 +39,7 @@ public class InscripcionDAO {
         return inscripcion;
     }
 
-    public static Inscripcion borrar(Inscripcion inscripcion){
+    public Inscripcion borrar(Inscripcion inscripcion){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 
@@ -49,17 +49,17 @@ public class InscripcionDAO {
         return inscripcion;
     }
 
-    public static Inscripcion mostrar(){
+    public List<Inscripcion> mostrar(){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
         Query<Inscripcion> query = session.createQuery("FROM Inscripcion", Inscripcion.class);
         List<Inscripcion> inscripciones = query.getResultList();
         session.getTransaction().commit();
         session.close();
-        return (Inscripcion) inscripciones;
+        return inscripciones;
     }
 
-    public static Inscripcion mostrarPorSocio(int idSocio){
+    public List<Inscripcion> mostrarPorSocio(int idSocio){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
         Query<Inscripcion> query = session.createQuery("from Inscripcion where id = :id", Inscripcion.class);
@@ -67,10 +67,10 @@ public class InscripcionDAO {
         List<Inscripcion> inscripciones = query.getResultList();
         session.getTransaction().commit();
         session.close();
-        return (Inscripcion) inscripciones;
+        return inscripciones;
     }
 
-    public static Inscripcion mostrarPorFecha(Date fechaInicio, Date fechaFin){
+    public List<Inscripcion> mostrarPorFecha(Date fechaInicio, Date fechaFin){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
         Query<Inscripcion> query = session.createQuery("FROM Inscripcion WHERE fechaInscripcion BETWEEN :fechaInicio AND :fechaFin", Inscripcion.class);
@@ -79,10 +79,10 @@ public class InscripcionDAO {
         List<Inscripcion> inscripciones = query.getResultList();
         session.getTransaction().commit();
         session.close();
-        return (Inscripcion) inscripciones;
+        return inscripciones;
     }
 
-    public static Inscripcion mostrarPorSocioYFecha(int idSocio, Date fechaInicio, Date fechaFin){
+    public List<Inscripcion> mostrarPorSocioYFecha(int idSocio, Date fechaInicio, Date fechaFin){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
         Query<Inscripcion> query = session.createQuery("FROM Inscripcion WHERE socio.id = :idSocio AND fechaInscripcion BETWEEN :fechaInicio AND :fechaFin", Inscripcion.class);
@@ -92,7 +92,7 @@ public class InscripcionDAO {
         List<Inscripcion> inscripciones = query.getResultList();
         session.getTransaction().commit();
         session.close();
-        return (Inscripcion) inscripciones;
+        return inscripciones;
     }
 
 }

@@ -19,26 +19,22 @@ public class InscripcionController {
         }
         public void crear(int idSocio, int idExcursion, LocalDate fechaInscripcion) {
         Inscripcion inscripcion = new Inscripcion(0, idSocio, idExcursion, fechaInscripcion);
-        InscripcionDAO.crear(inscripcion);
+        inscripcionDAO.crear(inscripcion);
         }
         public void borrar(int idInscripcion){
-                Inscripcion inscripcion = InscripcionDAO.porId(idInscripcion);
-                InscripcionDAO.borrar(inscripcion);
+                Inscripcion inscripcion = inscripcionDAO.porId(idInscripcion);
+                inscripcionDAO.borrar(inscripcion);
         }
         public List<Inscripcion> mostrar(){
-                List<Inscripcion> inscripciones = (List<Inscripcion>) InscripcionDAO.mostrar();
-                return inscripciones;
+                return inscripcionDAO.mostrar();
         }
         public List<Inscripcion> mostrarPorSocio(int idSocio) {
-                List<Inscripcion> inscripciones = (List<Inscripcion>) InscripcionDAO.mostrarPorSocio(idSocio);
-                return inscripciones;
+                return inscripcionDAO.mostrarPorSocio(idSocio);
         }
         public List<Inscripcion> mostrarPorFecha(Date fechaInicio, Date fechaFin) {
-                List<Inscripcion> inscripciones = (List<Inscripcion>) InscripcionDAO.mostrarPorFecha(fechaInicio, fechaFin);
-                return inscripciones;
+                return inscripcionDAO.mostrarPorFecha(fechaInicio, fechaFin);
         }
         public List<Inscripcion> mostrarPorSocioYFecha(int idSocio, Date fechaInicio, Date fechaFin) {
-                List<Inscripcion> inscripciones = (List<Inscripcion>) InscripcionDAO.mostrarPorSocioYFecha(idSocio, fechaInicio, fechaFin);
-            return inscripciones;
+                return  inscripcionDAO.mostrarPorSocioYFecha(idSocio, fechaInicio, fechaFin);   
         }
 }

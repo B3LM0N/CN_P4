@@ -3,6 +3,7 @@ package Modelo.Entidades;
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 @Table(name="inscripcion")
 @Entity
@@ -14,16 +15,14 @@ public class Inscripcion {
     @Temporal(TemporalType.DATE)
     private Date fechaInscripcion;
 
-    // Constructor vacío
-    public Inscripcion(int idInscripcion, int idSocio, int idExcursion, LocalDate fechaInscripcion) {
-    }
 
-    // Constructor con todos los atributos
-    public Inscripcion(int idInscripcion, int idSocio, int idExcursion, Date fechaInscripcion) {
+    public Inscripcion() {}
+
+    public Inscripcion(int idInscripcion, int idSocio, int idExcursion, LocalDate fechaInscripcion) {
         this.idInscripcion = idInscripcion;
         this.idSocio = idSocio;
         this.idExcursion = idExcursion;
-        this.fechaInscripcion = fechaInscripcion;
+        this.fechaInscripcion = Date.from(fechaInscripcion.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 
     // Getters y setters
