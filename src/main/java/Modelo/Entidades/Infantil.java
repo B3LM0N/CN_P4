@@ -9,14 +9,12 @@ public class Infantil extends Socio {
     public Infantil(int idSocio, String nombre, int idTutor) {
         super(idSocio, nombre, "Infantil");
         this.idTutor = idTutor;
-
     }
 
     // Getter y setter para el tutor asociado
     public int getIdTutor() {
         return idTutor;
     }
-
     public void setIdTutor(int idTutor) {
         this.idTutor = idTutor;
     }

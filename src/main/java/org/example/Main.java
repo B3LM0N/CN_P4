@@ -120,7 +120,7 @@ public class Main {
         } else {
             System.out.println("Hubo un error al eliminar la excursión.");
         }
-    }
+    }                               /* NO HACIA FALTA */
     private static void menuSocios(){
         boolean salirMenuSocios = false;
         System.out.println("\n--------------------------------------------------");
@@ -144,7 +144,7 @@ public class Main {
 //                    Datos.modificarSeguro(idSocio);
                     break;
                 case 3:
-//                    Datos.borrarSocio();
+                    borrarSocio();
                     break;
                 case 4:
                     System.out.println("\n1. Mostrar todos los socios");
@@ -153,10 +153,10 @@ public class Main {
                     int opcion2 = Teclado.pedirInt("\nCual listado de socios quieres elegir: ");
                     switch (opcion2){
                         case 1:
-//                            Datos.mostrarSocios();
+                            mostrarSocio();
                             break;
                         case 2:
-//                            Datos.mostrarSociosPorTipo();
+                            mostrarSocioPorTipo();
                             break;
                         case 3:
                             System.out.println("\n-------------------------------------------------------");
@@ -222,10 +222,45 @@ public class Main {
         socioController.crear(nombre, tipoSocio, nif, opcionSeguro, nombreFederacion, idTutor);
     }
             public static void modificarSeguro(){}
-            public static void borrarSocio(){}
-            public static void mostrarSocio(){}
-            public static void mostrarSocioPorTipo(){}
-            public static void mostrarFacutraMensual(){}
+            public static void borrarSocio(){
+                int idSocio = Teclado.pedirInt("\nInserta el ID del socio que quieres eliminar: ");
+                if (socioController.porId(idSocio) != null) {
+                    socioController.borrar(idSocio);
+                    System.out.println("\nEl socio ha sido eliminado con exito.");
+                } else {
+                    System.out.println("\nHubo un error al eliminar el socio.");
+                }
+            }                                       /* ACTUALIZAR */
+            public static void mostrarSocio(){
+                List<Socio> socios = socioController.mostrar();
+                System.out.println(socios);
+            }
+            public static void mostrarSocioPorTipo(){
+                System.out.println("\nIndica que tipo de socio deseas filtrar: ");
+                System.out.println("\n1. Socio Estandar");
+                System.out.println("\n2. Socio Federado");
+                System.out.println("\n3. Socio Infantil");
+                int opcion = Teclado.pedirInt("\nIntroduce el tipo de socio: ");
+                String tipoSocio = null;
+
+                switch(opcion) {
+                    case 1:
+                        tipoSocio = "Estandar";
+
+                        break;
+                    case 2:
+                        tipoSocio = "Federado";
+
+                        break;
+                    case 3:
+                        tipoSocio = "Infantil";
+                        break;
+                    default:
+                }
+                List<Socio> socios = socioController.mostrarPorTipo(tipoSocio);
+                System.out.println(socios);
+            }                              /* ACTUALIZAR */
+            public static void mostrarFacutraMensual(){}                              /*  FALTA  */
     private static void menuInscripciones() throws ParseException {
         boolean salirMenuInscripciones = false;
         System.out.println("\n--------------------------------------------------");

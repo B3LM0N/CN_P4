@@ -11,7 +11,6 @@ public class Federacion {
     private int idFederacion;
     private String nombreFederacion;
 
-
     // Constructor vacío
     public Federacion() {
     }
@@ -26,15 +25,12 @@ public class Federacion {
     public int getIdFederacion() {
         return idFederacion;
     }
-
     public void setIdFederacion(int idFederacion) {
         this.idFederacion = idFederacion;
     }
-
     public String getNombreFederacion() {
         return nombreFederacion;
     }
-
     public void setNombreFederacion(String nombreFederacion) {
         this.nombreFederacion = nombreFederacion;
     }

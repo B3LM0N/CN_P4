@@ -14,9 +14,7 @@ public class Excursion {
     private int duracionDias;
     private double precioInscripcion;
 
-
     public Excursion(){
-
     }
     // Constructor vacío
     public Excursion(String descripcion, Date fechaExcursion, int duracionDias, double precioInscripcion) {
@@ -36,49 +34,36 @@ public class Excursion {
     public int getIdExcursion() {
         return idExcursion;
     }
-
     public void setIdExcursion(int idExcursion) {
         this.idExcursion = idExcursion;
     }
-
     public String getDescripcion() {
         return descripcion;
     }
-
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
     public Date getFechaExcursion() {
         return fechaExcursion;
     }
-
     public void setFechaExcursion(Date fechaExcursion) {
         this.fechaExcursion = fechaExcursion;
     }
-
     public int getDuracionDias() {
         return duracionDias;
     }
-
     public void setDuracionDias(int duracionDias) {
         this.duracionDias = duracionDias;
     }
-
     public double getPrecioInscripcion() {
         return precioInscripcion;
     }
-
     public void setPrecioInscripcion(double precioInscripcion) {
         this.precioInscripcion = precioInscripcion;
     }
 
 
-
-
-
     // Método toString para imprimir los detalles de la excursión
-
     @Override
     public String toString() {
         //Transformar la fecha al formato deseado para que lo imporima

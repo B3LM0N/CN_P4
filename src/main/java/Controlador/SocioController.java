@@ -2,6 +2,9 @@ package Controlador;
 import Modelo.Entidades.DAO.*;
 import Modelo.Entidades.*;
 import Util.Teclado;
+
+import java.util.List;
+
 public class SocioController {
     SocioDAO socioDAO;
     SegurosDAO segurosDAO;
@@ -10,7 +13,6 @@ public class SocioController {
         this.socioDAO = new SocioDAO();
         this.segurosDAO = new SegurosDAO();
         this.federacionDAO = new FederacionDAO();
-
     }
     public Socio porId(int id){
         return socioDAO.porId(id);
@@ -38,6 +40,19 @@ public class SocioController {
             default:
                 System.out.println("Opción no válida. Por favor, reintente.");
         }
+        return socio;
+    }
+    public List<Socio> mostrar(){
+        List<Socio> socios = (List<Socio>) socioDAO.mostrar();
+        return socios;
+    }
+    public List<Socio> mostrarPorTipo(String tipoSocio){
+        List<Socio> socios = (List<Socio>) socioDAO.mostrarPorTipo(tipoSocio);
+        return socios;
+    }
+    public Socio borrar(int idSocio){
+        Socio socio = socioDAO.porId(idSocio);
+        socioDAO.borrar(socio);
         return socio;
     }
 }

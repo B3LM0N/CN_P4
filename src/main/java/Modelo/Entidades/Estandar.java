@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Entity
 public class Estandar extends Socio {
     private String nif;
-
     @ManyToOne(targetEntity=Seguro.class, fetch= FetchType.EAGER)
     private Seguro seguroContratado;
 
@@ -22,23 +21,18 @@ public class Estandar extends Socio {
     }
 
     // Getter y setter para el NIF
-
     public String getNif() {
         return nif;
     }
-
     public void setNif(String nif) {
         this.nif = nif;
     }
-
     public Seguro getSeguroContratado() {
         return seguroContratado;
     }
-
     public void setSeguroContratado(Seguro seguroContratado) {
         this.seguroContratado = seguroContratado;
     }
-
     @Override
     public String toString() {
         return "Estandar{" +

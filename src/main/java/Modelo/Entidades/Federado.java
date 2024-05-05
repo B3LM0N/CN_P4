@@ -5,7 +5,6 @@ public class Federado extends Socio {
     private String nif;
     public Federacion federacion;
 
-
     // Constructor vacío
     public Federado() {
     }
@@ -15,14 +14,12 @@ public class Federado extends Socio {
         super(idSocio, nif, String.valueOf(federacion));
         this.federacion = federacion;
         this.nif = nif;
-
     }
 
     // Getter y setter para el NIF
     public String getNif() {
         return nif;
     }
-
     public void setNif(String nif) {
         this.nif = nif;
     }
@@ -31,7 +28,6 @@ public class Federado extends Socio {
     public Federacion getFederacion() {
         return federacion;
     }
-
     public void setFederacion(Federacion federacion) {
         this.federacion = federacion;
     }
