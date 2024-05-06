@@ -71,14 +71,14 @@ public class SocioController {
      */
     private Socio crearEstandar(String nombre, String nif, int opcionSeguro) {
         Seguro seguroElegido = new Seguro(); // Supongo que aquí obtendrías el seguro seleccionado de alguna manera
-
+        seguroElegido.setIdSeguro(opcionSeguro);
         Socio socio = new Socio();
         socio.setNombre(nombre);
         socio.setTipoSocio("Estandar");
 
         Estandar estandar = new Estandar();
         estandar.setNif(nif);
-        //estandar.setSeguroContratado(seguroElegido);
+        estandar.setSeguroContratado(seguroElegido);
         Socio nuevo = socioDAO.crear(socio);
         estandar.setIdSocio(nuevo.getIdSocio());
         socioDAO.crearEstandar(estandar);
@@ -112,6 +112,14 @@ public class SocioController {
         socioDAO.crearInfantil(infantil);
         return nuevo;
     }
+
+    public Estandar modificarSeguroSocio(int idSocio, int nuevoSeguroContratado) {
+
+
+       return socioDAO.modificarSeguroSocio(idSocio,nuevoSeguroContratado);
+
+    }
+
 
     /**
      * Obtiene una lista de todos los socios.

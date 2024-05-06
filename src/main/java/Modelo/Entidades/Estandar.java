@@ -16,9 +16,9 @@ public class Estandar {
     @JoinColumn(name = "idSocio")
     public Socio socio;
 
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "seguroContratado_idSeguro")
-//    public Seguro seguroContratado;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "seguroContratado")
+    public Seguro seguroContratado;
 
 
     // Constructor vacío
@@ -27,9 +27,9 @@ public class Estandar {
     }
     // Constructor con todos los atributos
     public Estandar(String nif, Seguro seguroContratado) {
-//        super(idSocio, nombre, tipoSocio);
+        super();
         this.nif = nif;
-//        this.seguroContratado = seguroContratado;
+        this.seguroContratado = seguroContratado;
     }
 
     // Getter y setter para el NIF
@@ -41,13 +41,13 @@ public class Estandar {
         this.nif = nif;
     }
 
-//    public Seguro getSeguroContratado() {
-//        return seguroContratado;
-//    }
-//
-//    public void setSeguroContratado(Seguro seguroContratado) {
-//        this.seguroContratado = seguroContratado;
-//    }
+    public Seguro getSeguroContratado() {
+        return seguroContratado;
+    }
+
+    public void setSeguroContratado(Seguro seguroContratado) {
+        this.seguroContratado = seguroContratado;
+    }
 
     public Socio getSocio() {
         return socio;
@@ -70,6 +70,7 @@ public class Estandar {
         return "Estandar{" +
                 "idSocio=" + idSocio +
                 ", nif='" + nif + '\'' +
+                ", seguroContrado='" + seguroContratado +
                 '}';
     }
 }

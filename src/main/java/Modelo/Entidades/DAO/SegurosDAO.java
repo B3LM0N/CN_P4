@@ -26,5 +26,14 @@ public class SegurosDAO {
 
         return seguro;
     }
+
+    public Seguro crear(Seguro seguro){
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        session.persist(seguro);
+        session.getTransaction().commit();
+        session.close();
+        return seguro;
+    }
 }
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SocioDAO {
 
-    public Socio porId(int id){
+    public Socio porId(int id) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
         Query<Socio> query = session.createQuery("from Socio where id = :id", Socio.class);
@@ -28,6 +28,7 @@ public class SocioDAO {
         session.close();
         return socio;
     }
+
     public Estandar crearEstandar(Estandar estandar) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -36,6 +37,7 @@ public class SocioDAO {
         session.close();
         return estandar;
     }
+
     public Federado crearFederado(Federado federado) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -44,6 +46,7 @@ public class SocioDAO {
         session.close();
         return federado;
     }
+
     public Infantil crearInfantil(Infantil infantil) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -53,7 +56,27 @@ public class SocioDAO {
         return infantil;
     }
 
-    public List<Socio> mostrar(){
+    public Estandar modificarSeguroSocio(int idSocio, int nuevoSeguroContratado) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+
+        Seguro nuevoSeguro = new Seguro(nuevoSeguroContratado, "", 0);
+
+        Query<Estandar> modificarSeguro = session.createQuery("UPDATE Estandar SET seguroContratado = :nuevoSeguro WHERE idSocio = :idSocio");
+        modificarSeguro.setParameter("nuevoSeguro", nuevoSeguro);
+        modificarSeguro.setParameter("idSocio", idSocio);
+        modificarSeguro.executeUpdate();
+
+        Query<Estandar> recuperarSeguroSocioModificado = session.createQuery("FROM Estandar WHERE idSocio = :idSocio", Estandar.class);
+        Estandar resultadoModificado = recuperarSeguroSocioModificado.setParameter("idSocio", idSocio).getSingleResult();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return resultadoModificado;
+    }
+
+    public List<Socio> mostrar() {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
         Query<Socio> query = session.createQuery("FROM Socio", Socio.class);
@@ -62,6 +85,7 @@ public class SocioDAO {
         session.close();
         return socios;
     }
+
     public List<Socio> mostrarPorTipo(String tipoSocio) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -72,6 +96,7 @@ public class SocioDAO {
         session.close();
         return socios;
     }
+
     public Socio borrar(Socio socio) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();

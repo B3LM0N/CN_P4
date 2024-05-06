@@ -149,8 +149,7 @@ public class Main {
                     System.out.println("\nSocio Agregado Correctamente");
                     break;
                 case 2:
-//                    int idSocio = Teclado.pedirInt("\nIngrese el ID del socio cuyo seguro quieres modificar: ");
-//                    Datos.modificarSeguro(idSocio);
+                    modificarSeguro();
                     break;
                 case 3:
                     borrarSocio();
@@ -232,7 +231,13 @@ public class Main {
 //                } else {
 //                    System.out.println("Creación de socio infantil cancelada o no se encontró un tutor con el ID proporcionado.");
 //                }
-    public static void modificarSeguro(){}
+    public static void modificarSeguro(){
+        int idSocio = Teclado.pedirInt("Ingrese el id del socio: ");
+        int nuevoSeguroContratado = Teclado.pedirInt("Id del nuevo seguro: ");
+        socioController.modificarSeguroSocio(idSocio,nuevoSeguroContratado);
+        System.out.println(socioController.modificarSeguroSocio(idSocio,nuevoSeguroContratado));
+
+    }
 
     public static void borrarSocio(){
         int idSocio = Teclado.pedirInt("\nInserta el ID del socio que quieres eliminar: ");
@@ -413,10 +418,4 @@ public class Main {
             System.out.println("\nHa habido un error al eliminar la inscripcion.");
         }
     }
-
 }
-
-
-
-
-
