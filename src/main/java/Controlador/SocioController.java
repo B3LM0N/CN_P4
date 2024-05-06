@@ -2,7 +2,6 @@ package Controlador;
 
 import Modelo.Entidades.DAO.*;
 import Modelo.Entidades.*;
-import Util.Teclado;
 
 import java.util.List;
 
@@ -51,13 +50,13 @@ public class SocioController {
                 socio = crearEstandar(nombre, nif, opcionSeguro);
                 break;
             case 2:
-                // Crear socio federado
+//                 socio = crearFederado(nombre, nif, nombreFederacion);
                 break;
             case 3:
-                // Crear socio infantil
+                 socio = crearInfantil(nombre, idTutor);
                 break;
             default:
-                System.out.println("Opción no válida. Por favor, reintente.");
+                System.out.println("Opción no válida. Por favor, intentalo de nuevo.");
         }
 
         return socio;
@@ -83,6 +82,34 @@ public class SocioController {
         Socio nuevo = socioDAO.crear(socio);
         estandar.setIdSocio(nuevo.getIdSocio());
         socioDAO.crearEstandar(estandar);
+        return nuevo;
+    }
+
+//    private Socio crearFederado(String nombre, String nif, String nombreFederacion){
+//        Federacion federacion = new Federacion();
+//
+//        Socio socio = new Socio();
+//        socio.setNombre(nombre);
+//        socio.setTipoSocio("Federado");
+//
+//        Federado federado = new Federado();
+//        federado.setNif(nif);
+//        federado.setFederacion(federacion);
+//        Socio nuevo = socioDAO.crear(socio);
+//        federado.setIdSocio(nuevo.getIdSocio());
+//        socioDAO.crearFederado(federado);
+//        return nuevo;
+//    }
+    public Socio crearInfantil(String nombre, int idTutor){
+        Socio socio = new Socio();
+        socio.setNombre(nombre);
+        socio.setTipoSocio("Infantil");
+
+        Infantil infantil = new Infantil();
+        infantil.setIdTutor(idTutor);
+        Socio nuevo = socioDAO.crear(socio);
+        infantil.setIdSocio(nuevo.getIdSocio());
+        socioDAO.crearInfantil(infantil);
         return nuevo;
     }
 

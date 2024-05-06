@@ -48,4 +48,11 @@ public class Infantil {
     public void setSocio(Socio socio) {
         this.socio = socio;
     }
+
+    @Override
+    public String toString() {
+        return "Infantil{" +
+                "idSocio=" + idSocio +
+                ", idTutor=" + idTutor;
+    }
 }

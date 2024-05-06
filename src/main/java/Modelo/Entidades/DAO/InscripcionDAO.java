@@ -62,8 +62,8 @@ public class InscripcionDAO {
     public List<Inscripcion> mostrarPorSocio(int idSocio){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-        Query<Inscripcion> query = session.createQuery("from Inscripcion where id = :id", Inscripcion.class);
-        query.setParameter("id", idSocio);
+        Query<Inscripcion> query = session.createQuery("from Inscripcion where idSocio = :idSocio", Inscripcion.class);
+        query.setParameter("idSocio", idSocio);
         List<Inscripcion> inscripciones = query.getResultList();
         session.getTransaction().commit();
         session.close();
@@ -85,7 +85,7 @@ public class InscripcionDAO {
     public List<Inscripcion> mostrarPorSocioYFecha(int idSocio, Date fechaInicio, Date fechaFin){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-        Query<Inscripcion> query = session.createQuery("FROM Inscripcion WHERE socio.id = :idSocio AND fechaInscripcion BETWEEN :fechaInicio AND :fechaFin", Inscripcion.class);
+        Query<Inscripcion> query = session.createQuery("FROM Inscripcion WHERE idSocio = :idSocio AND fechaInscripcion BETWEEN :fechaInicio AND :fechaFin", Inscripcion.class);
         query.setParameter("idSocio", idSocio);
         query.setParameter("fechaInicio", fechaInicio);
         query.setParameter("fechaFin", fechaFin);

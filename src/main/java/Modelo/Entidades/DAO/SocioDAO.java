@@ -36,7 +36,22 @@ public class SocioDAO {
         session.close();
         return estandar;
     }
-
+    public Federado crearFederado(Federado federado) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        session.persist(federado);
+        session.getTransaction().commit();
+        session.close();
+        return federado;
+    }
+    public Infantil crearInfantil(Infantil infantil) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        session.persist(infantil);
+        session.getTransaction().commit();
+        session.close();
+        return infantil;
+    }
 
     public List<Socio> mostrar(){
         Session session = HibernateUtil.getSession();

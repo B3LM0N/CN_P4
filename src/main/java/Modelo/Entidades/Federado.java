@@ -14,6 +14,7 @@ public class Federado {
     @OneToOne
     @JoinColumn(name = "idSocio")
     public Socio socio;
+
 //    @ManyToOne
 //    public Federacion federacion;
 
@@ -23,9 +24,9 @@ public class Federado {
 
     // Constructor con todos los atributos
     public Federado(int idSocio, String nif,Federacion federacion) {
-//        super(idSocio, nif, String.valueOf(federacion));
-//        this.federacion = federacion;
+        super();
         this.nif = nif;
+//        this.federacion = federacion;
     }
 
     // Getter y setter para el NIF

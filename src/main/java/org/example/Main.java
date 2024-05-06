@@ -149,7 +149,7 @@ public class Main {
                     System.out.println("\nSocio Agregado Correctamente");
                     break;
                 case 2:
-                    int idSocio = Teclado.pedirInt("\nIngrese el ID del socio cuyo seguro quieres modificar: ");
+//                    int idSocio = Teclado.pedirInt("\nIngrese el ID del socio cuyo seguro quieres modificar: ");
 //                    Datos.modificarSeguro(idSocio);
                     break;
                 case 3:
@@ -216,6 +216,7 @@ public class Main {
                 break;
             case 3:
                 idTutor = Teclado.pedirInt("Elige el ID del tutor: ");
+
 
                 break;
             default:
