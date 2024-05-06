@@ -9,10 +9,11 @@ import java.util.List;
  * Clase que actúa como controlador para las operaciones relacionadas con los socios.
  */
 public class SocioController {
-
     SocioDAO socioDAO;
     SegurosDAO segurosDAO;
     FederacionDAO federacionDAO;
+    InscripcionDAO inscripcionDAO;
+    ExcursionDAO excursionDAO;
 
     /**
      * Constructor de la clase SocioController.
@@ -21,6 +22,8 @@ public class SocioController {
         this.socioDAO = new SocioDAO();
         this.segurosDAO = new SegurosDAO();
         this.federacionDAO = new FederacionDAO();
+        this. inscripcionDAO = new InscripcionDAO();
+        this. excursionDAO = new ExcursionDAO();
     }
 
     /**
@@ -100,6 +103,7 @@ public class SocioController {
         socioDAO.crearFederado(federado);
         return nuevo;
     }
+
     public Socio crearInfantil(String nombre, int idTutor){
         Socio socio = new Socio();
         socio.setNombre(nombre);
@@ -119,7 +123,6 @@ public class SocioController {
        return socioDAO.modificarSeguroSocio(idSocio,nuevoSeguroContratado);
 
     }
-
 
     /**
      * Obtiene una lista de todos los socios.
@@ -148,4 +151,41 @@ public class SocioController {
         socioDAO.borrar(socio);
         return socio;
     }
+
+
+    public Double mostrarFacturaTotal(int idSocio) {
+        Socio socioFactura = socioDAO.porId(idSocio);
+        if (socioFactura.getTipoSocio().equals("Estandar")) {
+            return socioDAO.mostrarFacturaEstandar(idSocio);
+        } else if (socioFactura.getTipoSocio().equals("Federado")) {
+            return socioDAO.mostrarFacturaFederado(idSocio);
+        } else {
+            return socioDAO.mostrarFacturaInfantil(idSocio);
+        }
+    }
+
+//    public double mostrarFactura () {
+//        List<Inscripcion> ListaInscripciones = inscripcionDAO.
+//        ArrayList<Inscripcion> inscripciones = new ArrayList<Inscripcion>();
+//        double coste = 0;
+//        double costeExcursiones = 0;
+//        for (Inscripcion inscripcion : ListaInscripciones) {
+//            if (inscripcion.getIdSocio() == socio.getIdSocio()) {
+//                inscripciones.add(inscripcion);
+//            }
+//        }
+//        ExcursionDAO excursionDAO = new ExcursionDAO();
+//        ArrayList<Excursion> listaExcursiones = excursionDAO.obtenerListaExcursiones();
+//        for (Inscripcion inscripcion : inscripciones) {
+//            for (Excursion excursion : listaExcursiones) {
+//                if (inscripcion.getIdExcursion() == excursion.getIdExcursion()) {
+//                    costeExcursiones += calcularCosteExcursion(socio, excursion);
+//                }
+//            }
+//        }
+//        coste = calcularCuota(socio) + costeExcursiones;
+//        return coste;
+//   }
+// Funcion para la logica de calcular la cuota + el coste de las inscripciones segun el Socio
+
 }

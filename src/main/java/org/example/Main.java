@@ -3,10 +3,8 @@ package org.example;
 import Controlador.FederacionController;
 import Controlador.*;
 import Modelo.Entidades.*;
-import Modelo.Entidades.DAO.ExcursionDAO;
 import Util.Teclado;
 
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -177,7 +175,7 @@ public class Main {
                     }
                     break;
                 case 5:
-//                    Datos.mostrarFacturaTotal();
+                    mostrarFacturaMensual();
                     break;
                 case 0:
                     salirMenuSocios = true;
@@ -280,10 +278,9 @@ public class Main {
                 System.out.println(socios);
             }
 
-    public static void mostrarFacutraMensual(){
+    public static Double mostrarFacturaMensual(){
         int idSocio = Teclado.pedirInt(("Ingrese el ID del socio: "));
-
-
+        return socioController.mostrarFacturaTotal(idSocio);
 
     }
 

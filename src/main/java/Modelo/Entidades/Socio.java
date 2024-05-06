@@ -1,6 +1,7 @@
 package Modelo.Entidades;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Socio {
@@ -11,6 +12,11 @@ public class Socio {
     private String nombre;
 
     private String tipoSocio;
+
+    @OneToMany(mappedBy = "socio")
+    private List<Inscripcion> inscripciones;
+
+
 
     @OneToOne(mappedBy = "socio", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
@@ -71,6 +77,15 @@ public class Socio {
     public void setInfantil(Infantil infantil) {
         this.infantil = infantil;
     }
+
+    public List<Inscripcion> getInscripciones() {
+        return inscripciones;
+    }
+
+    public void setInscripciones(List<Inscripcion> inscripciones) {
+        this.inscripciones = inscripciones;
+    }
+
 
     @Override
     public String toString() {

@@ -5,6 +5,7 @@ import Util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class SocioDAO {
@@ -96,8 +97,97 @@ public class SocioDAO {
         session.close();
         return socios;
     }
+public double mostrarFacturaEstandar(int idSocio){
+    Session session = HibernateUtil.getSession();
+    session.beginTransaction();
+ String sql = ("SELECT 10 + SUM(e.precioInscripcion + seg.precio) FROM Socio s " +
+         "JOIN s.inscripciones i " +
+         "JOIN i.excursion e " +
+         "LEFT JOIN s.estandar es " +
+         "LEFT JOIN es.seguroContratado seg " +
+         "WHERE s.idSocio = :idSocio ");
+    Query<Double> query = session.createQuery(sql, Double.class);
+    query.setParameter("idSocio", idSocio);
+    Double factura = query.getSingleResult();
+    session.getTransaction().commit();
+    session.close();
+    return factura;
+}
 
-    public Socio borrar(Socio socio) {
+public double mostrarFacturaFederado(int idSocio){
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+    String sql = "SELECT " +
+                "CASE " +
+                "WHEN s.tipoSocio = 'estandar' THEN 10 + SUM(CASE " +
+                "WHEN s.tipoSocio = 'estandar' THEN e.precioInscripcion + seg.precio " +
+                "END) " +
+                "WHEN s.tipoSocio = 'federado' THEN 10 * 0.95 + SUM(CASE " +
+                "WHEN s.tipoSocio = 'federado' THEN e.precioInscripcion * 0.90 " +
+                "END) " +
+                "WHEN s.tipoSocio = 'infantil' THEN 10 * 0.50 + SUM(CASE " +
+                "WHEN s.tipoSocio = 'infantil' THEN e.precioInscripcion " +
+                "END) " +
+                "ELSE SUM(e.precioInscripcion) " +
+                "END " +
+                "FROM " +
+                "Socio s " +
+                "JOIN " +
+                "s.inscripciones i " +
+                "JOIN " +
+                "i.excursion e " +
+                "LEFT JOIN " +
+                "s.estandar es " +
+                "LEFT JOIN " +
+                "es.seguroContratado seg " +
+                "WHERE " +
+                "s.idSocio = :idSocio";
+        Query<Double> query = session.createQuery(sql, Double.class);
+        query.setParameter("idSocio", idSocio);
+        Double factura = query.getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return factura;
+}
+
+public double mostrarFacturaInfantil(int idSocio){
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        String sql = "SELECT " +
+                "CASE " +
+                "WHEN s.tipoSocio = 'estandar' THEN 10 + SUM(CASE " +
+                "WHEN s.tipoSocio = 'estandar' THEN e.precioInscripcion + seg.precio " +
+                "END) " +
+                "WHEN s.tipoSocio = 'federado' THEN 10 * 0.95 + SUM(CASE " +
+                "WHEN s.tipoSocio = 'federado' THEN e.precioInscripcion * 0.90 " +
+                "END) " +
+                "WHEN s.tipoSocio = 'infantil' THEN 10 * 0.50 + SUM(CASE " +
+                "WHEN s.tipoSocio = 'infantil' THEN e.precioInscripcion " +
+                "END) " +
+                "ELSE SUM(e.precioInscripcion) " +
+                "END " +
+                "FROM " +
+                "Socio s " +
+                "JOIN " +
+                "s.inscripciones i " +
+                "JOIN " +
+                "i.excursion e " +
+                "LEFT JOIN " +
+                "s.estandar es " +
+                "LEFT JOIN " +
+                "es.seguroContratado seg " +
+                "WHERE " +
+                "s.idSocio = :idSocio";
+
+        Query<Double> query = session.createQuery(sql, Double.class);
+        query.setParameter("idSocio", idSocio);
+        Double factura = query.getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return factura;
+    }
+
+public Socio borrar(Socio socio) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 
@@ -105,5 +195,5 @@ public class SocioDAO {
         session.getTransaction().commit();
         session.close();
         return socio;
-    }
+}
 }

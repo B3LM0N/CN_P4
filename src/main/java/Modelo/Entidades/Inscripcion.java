@@ -16,6 +16,13 @@ public class Inscripcion {
     @Temporal(TemporalType.DATE)
     private Date fechaInscripcion;
 
+    @ManyToOne
+    @JoinColumn(name = "idSocio")
+    private Socio socio;
+
+    @ManyToOne
+    @JoinColumn(name = "idExcursion")
+    private Excursion excursion;
 
     public Inscripcion() {}
 
@@ -51,6 +58,8 @@ public class Inscripcion {
     public void setFechaInscripcion(Date fechaInscripcion) {
         this.fechaInscripcion = fechaInscripcion;
     }
+
+
 
     // Método toString para imprimir los detalles de la inscripción
     @Override
