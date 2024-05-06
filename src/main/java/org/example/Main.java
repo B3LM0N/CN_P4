@@ -280,7 +280,12 @@ public class Main {
                 System.out.println(socios);
             }
 
-    public static void mostrarFacutraMensual(){}
+    public static void mostrarFacutraMensual(){
+        int idSocio = Teclado.pedirInt(("Ingrese el ID del socio: "));
+
+
+
+    }
 
     private static void menuInscripciones() throws ParseException {
         boolean salirMenuInscripciones = false;
