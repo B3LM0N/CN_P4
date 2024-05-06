@@ -15,8 +15,9 @@ public class Federado {
     @JoinColumn(name = "idSocio")
     public Socio socio;
 
-//    @ManyToOne
-//    public Federacion federacion;
+    @ManyToOne
+    @JoinColumn(name = "idFederacion")
+    public Federacion federacion;
 
     // Constructor vacío
     public Federado() {
@@ -26,7 +27,7 @@ public class Federado {
     public Federado(int idSocio, String nif,Federacion federacion) {
         super();
         this.nif = nif;
-//        this.federacion = federacion;
+        this.federacion = federacion;
     }
 
     // Getter y setter para el NIF
@@ -38,12 +39,12 @@ public class Federado {
     }
 
     // Getter y setter para la federación
-//    public Federacion getFederacion() {
-//        return federacion;
-//    }
-//    public void setFederacion(Federacion federacion) {
-//        this.federacion = federacion;
-//    }
+    public Federacion getFederacion() {
+        return federacion;
+    }
+    public void setFederacion(Federacion federacion) {
+        this.federacion = federacion;
+    }
 
     public int getIdSocio() {
         return idSocio;

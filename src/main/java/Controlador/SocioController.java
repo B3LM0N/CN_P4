@@ -50,7 +50,7 @@ public class SocioController {
                 socio = crearEstandar(nombre, nif, opcionSeguro);
                 break;
             case 2:
-//                 socio = crearFederado(nombre, nif, nombreFederacion);
+                 socio = crearFederado(nombre, nif, nombreFederacion);
                 break;
             case 3:
                  socio = crearInfantil(nombre, idTutor);
@@ -85,21 +85,21 @@ public class SocioController {
         return nuevo;
     }
 
-//    private Socio crearFederado(String nombre, String nif, String nombreFederacion){
-//        Federacion federacion = new Federacion();
-//
-//        Socio socio = new Socio();
-//        socio.setNombre(nombre);
-//        socio.setTipoSocio("Federado");
-//
-//        Federado federado = new Federado();
-//        federado.setNif(nif);
-//        federado.setFederacion(federacion);
-//        Socio nuevo = socioDAO.crear(socio);
-//        federado.setIdSocio(nuevo.getIdSocio());
-//        socioDAO.crearFederado(federado);
-//        return nuevo;
-//    }
+    private Socio crearFederado(String nombre, String nif, String nombreFederacion){
+        Federacion federacion = new Federacion();
+        federacion.setNombreFederacion(nombreFederacion);
+        federacion = federacionDAO.crear(federacion);
+        Socio socio = new Socio();
+        socio.setNombre(nombre);
+        socio.setTipoSocio("Federado");
+        Federado federado = new Federado();
+        federado.setNif(nif);
+        federado.setFederacion(federacion);
+        Socio nuevo = socioDAO.crear(socio);
+        federado.setIdSocio(nuevo.getIdSocio());
+        socioDAO.crearFederado(federado);
+        return nuevo;
+    }
     public Socio crearInfantil(String nombre, int idTutor){
         Socio socio = new Socio();
         socio.setNombre(nombre);

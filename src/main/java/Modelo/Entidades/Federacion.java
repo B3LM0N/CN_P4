@@ -10,14 +10,15 @@ public class Federacion {
     private int idFederacion;
     private String nombreFederacion;
 
+
     // Constructor vacío
     public Federacion() {
     }
 
     // Constructor con todos los atributos
-    public Federacion(int idFederacion, String nombre) {
+    public Federacion(int idFederacion, String nombreFederacion) {
         this.idFederacion = idFederacion;
-        this.nombreFederacion = nombre;
+        this.nombreFederacion = nombreFederacion;
     }
 
     // Getters y setters

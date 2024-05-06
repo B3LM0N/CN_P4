@@ -27,5 +27,12 @@ public class FederacionDAO {
 
         return fede;
     }
-
+    public Federacion crear(Federacion federacion){
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        session.persist(federacion);
+        session.getTransaction().commit();
+        session.close();
+        return federacion;
+    }
 }
