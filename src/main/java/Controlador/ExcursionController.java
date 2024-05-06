@@ -37,7 +37,12 @@ public class ExcursionController {
      * @param precioInscripcion El precio de inscripción de la Excursion.
      */
     public void crear(String descripcion, Date fechaExcursion, int duracionDias, double precioInscripcion) {
-        Excursion excursion = new Excursion(0, descripcion,fechaExcursion, duracionDias, precioInscripcion);
+        Excursion excursion = new Excursion();
+        excursion.setIdExcursion(0);
+        excursion.setDescripcion(descripcion);
+        excursion.setFechaExcursion(fechaExcursion);
+        excursion.setDuracionDias(duracionDias);
+        excursion.setPrecioInscripcion(precioInscripcion);
         excursionDAO.crear(excursion);
     }
 

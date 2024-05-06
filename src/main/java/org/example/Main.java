@@ -175,7 +175,8 @@ public class Main {
                     }
                     break;
                 case 5:
-                    mostrarFacturaMensual();
+                    Double precioFactura = mostrarFacturaMensual();
+                    System.out.println("Precio de la factura: " + precioFactura);
                     break;
                 case 0:
                     salirMenuSocios = true;
@@ -250,6 +251,11 @@ public class Main {
     public static void mostrarSocio(){
         List<Socio> socios = socioController.mostrar();
         System.out.println(socios);
+        System.out.println("-------- LISTA DE SOCIOS ---------");
+        for(Socio socio: socios){
+            System.out.println(socio.toString());
+        }
+        System.out.println("----------------------------------");
     }
 
     public static void mostrarSocioPorTipo(){

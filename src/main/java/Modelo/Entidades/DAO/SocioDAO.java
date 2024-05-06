@@ -61,7 +61,11 @@ public class SocioDAO {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 
-        Seguro nuevoSeguro = new Seguro(nuevoSeguroContratado, "", 0);
+        Seguro nuevoSeguro = new Seguro();
+        nuevoSeguro.setIdSeguro(nuevoSeguroContratado);
+        nuevoSeguro.setSeguroContratado("");
+        nuevoSeguro.setPrecio(0);
+
 
         Query<Estandar> modificarSeguro = session.createQuery("UPDATE Estandar SET seguroContratado = :nuevoSeguro WHERE idSocio = :idSocio");
         modificarSeguro.setParameter("nuevoSeguro", nuevoSeguro);

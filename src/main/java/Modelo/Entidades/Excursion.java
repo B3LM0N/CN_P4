@@ -15,21 +15,7 @@ public class Excursion {
     private int duracionDias;
     private double precioInscripcion;
 
-    public Excursion(){
-    }
-    // Constructor vacío
-    public Excursion(String descripcion, Date fechaExcursion, int duracionDias, double precioInscripcion) {
-    }
-
-    // Constructor con todos los atributos
-    public Excursion(int idExcursion, String descripcion, Date fechaExcursion, int duracionDias, double precioInscripcion) {
-        this.idExcursion = idExcursion;
-        this.descripcion = descripcion;
-
-        this.fechaExcursion = fechaExcursion;
-        this.duracionDias = duracionDias;
-        this.precioInscripcion = precioInscripcion;
-    }
+    public Excursion(){}
 
     // Getters y setters
     public int getIdExcursion() {

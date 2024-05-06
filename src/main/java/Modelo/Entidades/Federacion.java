@@ -12,14 +12,7 @@ public class Federacion {
 
 
     // Constructor vacío
-    public Federacion() {
-    }
-
-    // Constructor con todos los atributos
-    public Federacion(int idFederacion, String nombreFederacion) {
-        this.idFederacion = idFederacion;
-        this.nombreFederacion = nombreFederacion;
-    }
+    public Federacion() {}
 
     // Getters y setters
     public int getIdFederacion() {

@@ -10,20 +10,13 @@ public class Infantil {
 
     @Id
     private int idSocio;
-
     private int idTutor;
     @OneToOne
     @JoinColumn(name = "idSocio")
     public Socio socio;
 
     // Constructor vacío
-    public Infantil() {
-    }
-    // Constructor con todos los atributos
-    public Infantil(int idSocio, String nombre, int idTutor) {
-//        super(idSocio, nombre, "Infantil");
-        this.idTutor = idTutor;
-    }
+    public Infantil() {}
 
     // Getter y setter para el tutor asociado
     public int getIdTutor() {

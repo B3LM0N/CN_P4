@@ -4,6 +4,7 @@ import Modelo.Entidades.DAO.*;
 import Modelo.Entidades.*;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -13,12 +14,16 @@ import java.util.List;
 public class InscripcionController {
 
         InscripcionDAO inscripcionDAO;
+        SocioDAO socioDAO;
+        ExcursionDAO excursionDAO;
 
         /**
          * Constructor de la clase InscripcionController.
          */
         public InscripcionController(){
                 this.inscripcionDAO = new InscripcionDAO();
+                this.socioDAO = new SocioDAO();
+                this.excursionDAO = new ExcursionDAO();
         }
 
         /**
@@ -37,7 +42,13 @@ public class InscripcionController {
          * @param fechaInscripcion La fecha de inscripción.
          */
         public void crear(int idSocio, int idExcursion, LocalDate fechaInscripcion) {
-                Inscripcion inscripcion = new Inscripcion(0, idSocio, idExcursion, fechaInscripcion);
+                Socio socio = socioDAO.porId(idSocio);
+                Excursion excursion = excursionDAO.porId(idExcursion);
+                Inscripcion inscripcion = new Inscripcion();
+                inscripcion.setIdInscripcion(0);
+                inscripcion.setSocio(socio);
+                inscripcion.setExcursion(excursion);
+                inscripcion.setFechaInscripcion(Date.from(fechaInscripcion.atStartOfDay(ZoneId.systemDefault()).toInstant()));
                 inscripcionDAO.crear(inscripcion);
         }
 

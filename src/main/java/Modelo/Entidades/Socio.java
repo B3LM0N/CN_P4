@@ -17,7 +17,6 @@ public class Socio {
     private List<Inscripcion> inscripciones;
 
 
-
     @OneToOne(mappedBy = "socio", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Federado federado;
