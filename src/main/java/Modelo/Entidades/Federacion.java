@@ -27,4 +27,12 @@ public class Federacion {
     public void setNombreFederacion(String nombreFederacion) {
         this.nombreFederacion = nombreFederacion;
     }
+
+    @Override
+    public String toString() {
+        return "Federacion{" +
+                "idFederacion=" + idFederacion +
+                ", nombreFederacion='" + nombreFederacion + '\'' +
+                '}';
+    }
 }

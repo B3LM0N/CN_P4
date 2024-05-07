@@ -224,12 +224,7 @@ public class Main {
         Socio socio = socioController.crear(nombre, tipoSocio, nif, opcionSeguro, nombreFederacion, idTutor);
 
     }
-    // TODO: para luego jeje
-//                if (tutor != null && Teclado.pedirInt("El tutor seleccionado es: " + tutor.getNombre() + " (ID: " + tutor.getIdSocio() + ")\n1. Confirmar tutor\n2. Cancelar\nIngrese la opción deseada: ") == 1) {
-//                    nuevoSocio = new Infantil(0, nombre, tutor.getIdSocio());
-//                } else {
-//                    System.out.println("Creación de socio infantil cancelada o no se encontró un tutor con el ID proporcionado.");
-//                }
+
     public static void modificarSeguro(){
         int idSocio = Teclado.pedirInt("Ingrese el id del socio: ");
         int nuevoSeguroContratado = Teclado.pedirInt("Id del nuevo seguro: ");
