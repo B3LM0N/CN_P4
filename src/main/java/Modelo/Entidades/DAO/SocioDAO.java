@@ -122,7 +122,7 @@ public double mostrarFacturaFederado(int idSocio){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
         // multiplicamos la cuota mensual * 0.05 para hacer una rebaja del 5%
-        Double cuotaConDescuento = CUOTA_MENSUAL * 0.05;
+        Double cuotaConDescuento = CUOTA_MENSUAL * 0.95;
         String sql = "SELECT " + cuotaConDescuento + " + SUM(e.precioInscripcion) " +
                 "FROM Socio s " +
                 "JOIN s.inscripciones i " +
