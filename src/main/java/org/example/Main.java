@@ -175,7 +175,8 @@ public class Main {
                     }
                     break;
                 case 5:
-                    mostrarFacturaMensual();
+                    Double precioFactura = mostrarFacturaMensual();
+                    System.out.println("Precio de la factura: " + precioFactura);
                     break;
                 case 0:
                     salirMenuSocios = true;
@@ -223,12 +224,7 @@ public class Main {
         Socio socio = socioController.crear(nombre, tipoSocio, nif, opcionSeguro, nombreFederacion, idTutor);
 
     }
-    // TODO: para luego jeje
-//                if (tutor != null && Teclado.pedirInt("El tutor seleccionado es: " + tutor.getNombre() + " (ID: " + tutor.getIdSocio() + ")\n1. Confirmar tutor\n2. Cancelar\nIngrese la opción deseada: ") == 1) {
-//                    nuevoSocio = new Infantil(0, nombre, tutor.getIdSocio());
-//                } else {
-//                    System.out.println("Creación de socio infantil cancelada o no se encontró un tutor con el ID proporcionado.");
-//                }
+
     public static void modificarSeguro(){
         int idSocio = Teclado.pedirInt("Ingrese el id del socio: ");
         int nuevoSeguroContratado = Teclado.pedirInt("Id del nuevo seguro: ");
@@ -250,6 +246,11 @@ public class Main {
     public static void mostrarSocio(){
         List<Socio> socios = socioController.mostrar();
         System.out.println(socios);
+        System.out.println("-------- LISTA DE SOCIOS ---------");
+        for(Socio socio: socios){
+            System.out.println(socio.toString());
+        }
+        System.out.println("----------------------------------");
     }
 
     public static void mostrarSocioPorTipo(){

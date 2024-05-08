@@ -164,28 +164,4 @@ public class SocioController {
         }
     }
 
-//    public double mostrarFactura () {
-//        List<Inscripcion> ListaInscripciones = inscripcionDAO.
-//        ArrayList<Inscripcion> inscripciones = new ArrayList<Inscripcion>();
-//        double coste = 0;
-//        double costeExcursiones = 0;
-//        for (Inscripcion inscripcion : ListaInscripciones) {
-//            if (inscripcion.getIdSocio() == socio.getIdSocio()) {
-//                inscripciones.add(inscripcion);
-//            }
-//        }
-//        ExcursionDAO excursionDAO = new ExcursionDAO();
-//        ArrayList<Excursion> listaExcursiones = excursionDAO.obtenerListaExcursiones();
-//        for (Inscripcion inscripcion : inscripciones) {
-//            for (Excursion excursion : listaExcursiones) {
-//                if (inscripcion.getIdExcursion() == excursion.getIdExcursion()) {
-//                    costeExcursiones += calcularCosteExcursion(socio, excursion);
-//                }
-//            }
-//        }
-//        coste = calcularCuota(socio) + costeExcursiones;
-//        return coste;
-//   }
-// Funcion para la logica de calcular la cuota + el coste de las inscripciones segun el Socio
-
 }

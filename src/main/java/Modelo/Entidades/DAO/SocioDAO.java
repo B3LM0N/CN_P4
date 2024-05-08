@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class SocioDAO {
-
+    private final int CUOTA_MENSUAL = 10;
     public Socio porId(int id) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -61,7 +61,11 @@ public class SocioDAO {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 
-        Seguro nuevoSeguro = new Seguro(nuevoSeguroContratado, "", 0);
+        Seguro nuevoSeguro = new Seguro();
+        nuevoSeguro.setIdSeguro(nuevoSeguroContratado);
+        nuevoSeguro.setSeguroContratado("");
+        nuevoSeguro.setPrecio(0);
+
 
         Query<Estandar> modificarSeguro = session.createQuery("UPDATE Estandar SET seguroContratado = :nuevoSeguro WHERE idSocio = :idSocio");
         modificarSeguro.setParameter("nuevoSeguro", nuevoSeguro);
@@ -100,7 +104,7 @@ public class SocioDAO {
 public double mostrarFacturaEstandar(int idSocio){
     Session session = HibernateUtil.getSession();
     session.beginTransaction();
- String sql = ("SELECT 10 + SUM(e.precioInscripcion + seg.precio) FROM Socio s " +
+ String sql = ("SELECT " + CUOTA_MENSUAL + " + SUM(e.precioInscripcion + seg.precio) FROM Socio s " +
          "JOIN s.inscripciones i " +
          "JOIN i.excursion e " +
          "LEFT JOIN s.estandar es " +
@@ -117,31 +121,14 @@ public double mostrarFacturaEstandar(int idSocio){
 public double mostrarFacturaFederado(int idSocio){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-    String sql = "SELECT " +
-                "CASE " +
-                "WHEN s.tipoSocio = 'estandar' THEN 10 + SUM(CASE " +
-                "WHEN s.tipoSocio = 'estandar' THEN e.precioInscripcion + seg.precio " +
-                "END) " +
-                "WHEN s.tipoSocio = 'federado' THEN 10 * 0.95 + SUM(CASE " +
-                "WHEN s.tipoSocio = 'federado' THEN e.precioInscripcion * 0.90 " +
-                "END) " +
-                "WHEN s.tipoSocio = 'infantil' THEN 10 * 0.50 + SUM(CASE " +
-                "WHEN s.tipoSocio = 'infantil' THEN e.precioInscripcion " +
-                "END) " +
-                "ELSE SUM(e.precioInscripcion) " +
-                "END " +
-                "FROM " +
-                "Socio s " +
-                "JOIN " +
-                "s.inscripciones i " +
-                "JOIN " +
-                "i.excursion e " +
-                "LEFT JOIN " +
-                "s.estandar es " +
-                "LEFT JOIN " +
-                "es.seguroContratado seg " +
-                "WHERE " +
-                "s.idSocio = :idSocio";
+        // multiplicamos la cuota mensual * 0.05 para hacer una rebaja del 5%
+        Double cuotaConDescuento = CUOTA_MENSUAL * 0.05;
+        String sql = "SELECT " + cuotaConDescuento + " + SUM(e.precioInscripcion) " +
+                "FROM Socio s " +
+                "JOIN s.inscripciones i " +
+                "JOIN i.excursion e " +
+                "WHERE s.idSocio = :idSocio ";
+
         Query<Double> query = session.createQuery(sql, Double.class);
         query.setParameter("idSocio", idSocio);
         Double factura = query.getSingleResult();
@@ -153,31 +140,14 @@ public double mostrarFacturaFederado(int idSocio){
 public double mostrarFacturaInfantil(int idSocio){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-        String sql = "SELECT " +
-                "CASE " +
-                "WHEN s.tipoSocio = 'estandar' THEN 10 + SUM(CASE " +
-                "WHEN s.tipoSocio = 'estandar' THEN e.precioInscripcion + seg.precio " +
-                "END) " +
-                "WHEN s.tipoSocio = 'federado' THEN 10 * 0.95 + SUM(CASE " +
-                "WHEN s.tipoSocio = 'federado' THEN e.precioInscripcion * 0.90 " +
-                "END) " +
-                "WHEN s.tipoSocio = 'infantil' THEN 10 * 0.50 + SUM(CASE " +
-                "WHEN s.tipoSocio = 'infantil' THEN e.precioInscripcion " +
-                "END) " +
-                "ELSE SUM(e.precioInscripcion) " +
-                "END " +
-                "FROM " +
-                "Socio s " +
-                "JOIN " +
-                "s.inscripciones i " +
-                "JOIN " +
-                "i.excursion e " +
-                "LEFT JOIN " +
-                "s.estandar es " +
-                "LEFT JOIN " +
-                "es.seguroContratado seg " +
-                "WHERE " +
-                "s.idSocio = :idSocio";
+        // multiplicamos la cuota mensual * 0.5 para hacer una rebaja del 50%
+        Double cuotaConDescuento = CUOTA_MENSUAL * 0.5;
+
+        String sql = "SELECT " + cuotaConDescuento + " + SUM(e.precioInscripcion) " +
+                    "FROM Socio s " +
+                    "JOIN s.inscripciones i " +
+                    "JOIN i.excursion e " +
+                    "WHERE s.idSocio = :idSocio ";
 
         Query<Double> query = session.createQuery(sql, Double.class);
         query.setParameter("idSocio", idSocio);

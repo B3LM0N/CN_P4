@@ -12,14 +12,7 @@ public class Federacion {
 
 
     // Constructor vacío
-    public Federacion() {
-    }
-
-    // Constructor con todos los atributos
-    public Federacion(int idFederacion, String nombreFederacion) {
-        this.idFederacion = idFederacion;
-        this.nombreFederacion = nombreFederacion;
-    }
+    public Federacion() {}
 
     // Getters y setters
     public int getIdFederacion() {
@@ -33,5 +26,13 @@ public class Federacion {
     }
     public void setNombreFederacion(String nombreFederacion) {
         this.nombreFederacion = nombreFederacion;
+    }
+
+    @Override
+    public String toString() {
+        return "Federacion{" +
+                "idFederacion=" + idFederacion +
+                ", nombreFederacion='" + nombreFederacion + '\'' +
+                '}';
     }
 }

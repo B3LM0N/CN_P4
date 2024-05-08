@@ -20,15 +20,7 @@ public class Federado {
     public Federacion federacion;
 
     // Constructor vacío
-    public Federado() {
-    }
-
-    // Constructor con todos los atributos
-    public Federado(int idSocio, String nif,Federacion federacion) {
-        super();
-        this.nif = nif;
-        this.federacion = federacion;
-    }
+    public Federado() {}
 
     // Getter y setter para el NIF
     public String getNif() {

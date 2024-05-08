@@ -25,12 +25,6 @@ public class Estandar {
     public Estandar() {
         super();
     }
-    // Constructor con todos los atributos
-    public Estandar(String nif, Seguro seguroContratado) {
-        super();
-        this.nif = nif;
-        this.seguroContratado = seguroContratado;
-    }
 
     // Getter y setter para el NIF
     public String getNif() {

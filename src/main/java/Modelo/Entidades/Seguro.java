@@ -14,22 +14,12 @@ public class Seguro {
     public double precio;
 
     // Constructor vacío
-    public Seguro() {
-    }
-    public Seguro(int idSeguro, String seguroContratado, double precio) {
-        this.idSeguro = idSeguro;
-        this.seguroContratado = seguroContratado;
-        this.precio = precio;
-    }
+    public Seguro() {}
     public int getIdSeguro() {
         return idSeguro;
     }
     public void setIdSeguro(int idSeguro) {
         this.idSeguro = idSeguro;
-    }
-    public Seguro(String seguroContratado, double precio) {
-        this.seguroContratado = seguroContratado;
-        this.precio = precio;
     }
     public String getSeguroContratado() {
         return seguroContratado;

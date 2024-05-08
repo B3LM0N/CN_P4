@@ -11,55 +11,51 @@ public class Inscripcion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idInscripcion;
-    private int idSocio;
-    private int idExcursion;
     @Temporal(TemporalType.DATE)
     private Date fechaInscripcion;
-
     @ManyToOne
     @JoinColumn(name = "idSocio")
     private Socio socio;
-
     @ManyToOne
     @JoinColumn(name = "idExcursion")
     private Excursion excursion;
-
     public Inscripcion() {}
 
-    public Inscripcion(int idInscripcion, int idSocio, int idExcursion, LocalDate fechaInscripcion) {
-        this.idInscripcion = idInscripcion;
-        this.idSocio = idSocio;
-        this.idExcursion = idExcursion;
-        this.fechaInscripcion = Date.from(fechaInscripcion.atStartOfDay(ZoneId.systemDefault()).toInstant());
-    }
 
     // Getters y setters
+
+
     public int getIdInscripcion() {
         return idInscripcion;
     }
+
     public void setIdInscripcion(int idInscripcion) {
         this.idInscripcion = idInscripcion;
     }
-    public int getIdSocio() {
-        return idSocio;
-    }
-    public void setIdSocio(int idSocio) {
-        this.idSocio = idSocio;
-    }
-    public int getIdExcursion() {
-        return idExcursion;
-    }
-    public void setIdExcursion(int idExcursion) {
-        this.idExcursion = idExcursion;
-    }
+
     public Date getFechaInscripcion() {
         return fechaInscripcion;
     }
+
     public void setFechaInscripcion(Date fechaInscripcion) {
         this.fechaInscripcion = fechaInscripcion;
     }
 
+    public Socio getSocio() {
+        return socio;
+    }
 
+    public void setSocio(Socio socio) {
+        this.socio = socio;
+    }
+
+    public Excursion getExcursion() {
+        return excursion;
+    }
+
+    public void setExcursion(Excursion excursion) {
+        this.excursion = excursion;
+    }
 
     // Método toString para imprimir los detalles de la inscripción
     @Override
@@ -67,7 +63,7 @@ public class Inscripcion {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         String fechaTransformada = formatoFecha.format(fechaInscripcion);
         return "Inscripcion con id número " + idInscripcion + ", realizada el " + fechaTransformada +
-                ".\nAsociada a la excursión número " + idExcursion +" y al socio número " + idSocio + ".";
+                ".\nAsociada a la excursión número " + excursion.getIdExcursion() +" y al socio número " + socio.getIdSocio() + ".";
     }
 }
 
