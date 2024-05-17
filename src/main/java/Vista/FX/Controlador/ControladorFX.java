@@ -18,7 +18,6 @@ public class ControladorFX {
         // Cerrar el Stage
         stage.close();
     }
-
     @FXML
     protected void menuGestionExcursiones() throws IOException {
         // Carga el archivo FXML
@@ -73,8 +72,6 @@ public class ControladorFX {
         stage.setScene(new Scene(loader.load()));
         stage.show();
     }
-
-    /*
     @FXML
     protected void cambiarSeguroSocio() throws IOException {
         // Carga el archivo FXML
@@ -95,7 +92,7 @@ public class ControladorFX {
         stage.setScene(new Scene(loader.load()));
         stage.show();
     }
-     */
+
     @FXML
     protected void mostrarSociosSelec() throws IOException {
         // Carga el archivo FXML
@@ -151,12 +148,11 @@ public class ControladorFX {
         stage.show();
     }
 
-    /*@FXML
+    @FXML
     protected void mostrarFacturaSelec(){}
         @FXML
     protected void mostrarFactura(){
     }
-     */
     @FXML
     protected void menuGestionInscripciones() throws IOException {
         // Carga el archivo FXML
