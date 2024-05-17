@@ -2,6 +2,7 @@ package Vista.FX.Controlador;
 
 import Controlador.ExcursionController;
 import Controlador.InscripcionController;
+import Util.Teclado;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,12 +10,17 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import Modelo.Entidades.*;
 import Controlador.SocioController;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class ControladorFX {
 
@@ -37,7 +43,14 @@ public class ControladorFX {
     private ChoiceBox<String> tipoSeguro;
     @FXML
     private TextField idSocioField;
-
+    @FXML
+    private TextField descripcionField;
+    @FXML
+    private DatePicker fechaExcursionDate;
+    @FXML
+    private TextField duracionDiasField;
+    @FXML
+    private TextField precioInscripcionField;
 
 
 
@@ -79,6 +92,20 @@ public class ControladorFX {
         stage.initModality(Modality.WINDOW_MODAL);
         stage.setScene(new Scene(loader.load()));
         stage.show();
+    }
+
+    @FXML
+    private void crearExcursion(){
+    String descripcion = descripcionField.getText();
+        Date fechaExcursion = Date.from(fechaExcursionDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        int duracionDias = Integer.parseInt(duracionDiasField.getText());
+        double precioInscripcion = Double.parseDouble(precioInscripcionField.getText());
+        // Llamar al método de negocio
+        Excursion excursion = excursionController.crear(descripcion, fechaExcursion, duracionDias, precioInscripcion);
+
+        // Muestra un mensaje de éxito
+        showAlert("Éxito", "Socio creado exitosamente.");
+
     }
     @FXML
     protected void mostrarExcursionesPorFechas() throws IOException {

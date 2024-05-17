@@ -31,12 +31,14 @@ public class ExcursionController {
 
     /**
      * Crea una nueva Excursion.
-     * @param descripcion La descripción de la Excursion.
-     * @param fechaExcursion La fecha de la Excursion.
-     * @param duracionDias La duración en días de la Excursion.
+     *
+     * @param descripcion       La descripción de la Excursion.
+     * @param fechaExcursion    La fecha de la Excursion.
+     * @param duracionDias      La duración en días de la Excursion.
      * @param precioInscripcion El precio de inscripción de la Excursion.
+     * @return
      */
-    public void crear(String descripcion, Date fechaExcursion, int duracionDias, double precioInscripcion) {
+    public Excursion crear(String descripcion, Date fechaExcursion, int duracionDias, double precioInscripcion) {
         Excursion excursion = new Excursion();
         excursion.setIdExcursion(0);
         excursion.setDescripcion(descripcion);
@@ -44,6 +46,7 @@ public class ExcursionController {
         excursion.setDuracionDias(duracionDias);
         excursion.setPrecioInscripcion(precioInscripcion);
         excursionDAO.crear(excursion);
+        return excursion;
     }
 
     /**
