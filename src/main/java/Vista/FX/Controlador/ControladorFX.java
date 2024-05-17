@@ -2,7 +2,6 @@ package Vista.FX.Controlador;
 
 import Controlador.ExcursionController;
 import Controlador.InscripcionController;
-import Util.Teclado;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,8 +16,7 @@ import javafx.stage.Stage;
 import Modelo.Entidades.*;
 import Controlador.SocioController;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -27,6 +25,7 @@ public class ControladorFX {
     static SocioController socioController = new SocioController();
     static ExcursionController excursionController = new ExcursionController();
     static InscripcionController inscripcionController = new InscripcionController();
+
     @FXML
     private TextField nombreField;
     @FXML
@@ -51,12 +50,10 @@ public class ControladorFX {
     private TextField duracionDiasField;
     @FXML
     private TextField precioInscripcionField;
-
-
-
-
-
-
+    @FXML
+    private TextField idExcursionField;
+    @FXML
+    private TextField idInscripcionField;
 
 
     @FXML
@@ -73,6 +70,8 @@ public class ControladorFX {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+
     @FXML
     protected void menuGestionExcursiones() throws IOException {
         // Carga el archivo FXML
@@ -93,7 +92,6 @@ public class ControladorFX {
         stage.setScene(new Scene(loader.load()));
         stage.show();
     }
-
     @FXML
     private void crearExcursion(){
     String descripcion = descripcionField.getText();
@@ -104,8 +102,7 @@ public class ControladorFX {
         Excursion excursion = excursionController.crear(descripcion, fechaExcursion, duracionDias, precioInscripcion);
 
         // Muestra un mensaje de éxito
-        showAlert("Éxito", "Socio creado exitosamente.");
-
+        showAlert("Éxito", "Excursión creada exitosamente.");
     }
     @FXML
     protected void mostrarExcursionesPorFechas() throws IOException {
@@ -117,6 +114,7 @@ public class ControladorFX {
         stage.setScene(new Scene(loader.load()));
         stage.show();
     }
+
 
     @FXML
     protected void menuGestionSocios() throws IOException {
@@ -183,7 +181,7 @@ public class ControladorFX {
         showAlert("Éxito", "Socio creado exitosamente.");
     }
     @FXML
-    protected void cambiarSeguroSocio() throws IOException {
+    protected void cambiarSeguroSocioSelec() throws IOException {
         // Carga el archivo FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FX/Socios/cambioSeguro.fxml"));
         Stage stage = new Stage();
@@ -191,6 +189,19 @@ public class ControladorFX {
         stage.initModality(Modality.WINDOW_MODAL);
         stage.setScene(new Scene(loader.load()));
         stage.show();
+    }
+    @FXML
+    private void cambiarSeguroSocio(){
+        int idSocio = Integer.parseInt(idSocioField.getText());
+        int nuevoSeguroContratado = 0;
+        String tipoSeguroStr = tipoSeguro.getValue();
+        if (tipoSeguroStr != null) {
+            nuevoSeguroContratado = tipoSeguroStr.startsWith("Basico") ? 1 : 2;
+        }
+        // Llamar al método de negocio
+        Estandar socio = socioController.modificarSeguroSocio(idSocio,nuevoSeguroContratado);
+        // Muestra un mensaje de éxito
+        showAlert("Éxito", "Seguro modificado correctamente.");
     }
     @FXML
     protected void borrarSocioSelec() throws IOException {
@@ -274,6 +285,8 @@ public class ControladorFX {
         stage.show();
     }
 
+
+
     @FXML
     protected void menuGestionInscripciones() throws IOException {
         // Carga el archivo FXML
@@ -285,7 +298,7 @@ public class ControladorFX {
         stage.show();
     }
     @FXML
-    protected void crearInscripcion() throws IOException {
+    protected void crearInscripcionForm() throws IOException {
         // Carga el archivo FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FX/Inscripciones/crearInscripcionForm.fxml"));
         Stage stage = new Stage();
@@ -295,7 +308,18 @@ public class ControladorFX {
         stage.show();
     }
     @FXML
-    protected void eliminarInscripcion() throws IOException {
+    private void crearIncripcion(){
+        int idSocio = Integer.parseInt(idSocioField.getText());
+        int idExcursion = Integer.parseInt(idExcursionField.getText());
+        LocalDate fechaInscripcion = LocalDate.now();
+        // Llamar al método de negocio
+        Inscripcion inscripcion = inscripcionController.crear(idSocio, idExcursion, fechaInscripcion);
+
+        // Muestra un mensaje de éxito
+        showAlert("Éxito", "Inscripción creada con éxito.");
+    }
+    @FXML
+    protected void borrarInscripcionSelec() throws IOException {
         // Carga el archivo FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FX/Inscripciones/eliminarInscripcion.fxml"));
         Stage stage = new Stage();
@@ -303,6 +327,17 @@ public class ControladorFX {
         stage.initModality(Modality.WINDOW_MODAL);
         stage.setScene(new Scene(loader.load()));
         stage.show();
+    }
+    @FXML
+    private void borrarInscripcion(){
+        int idInscripcion = 0;
+        idInscripcion = Integer.parseInt(idInscripcionField.getText());
+        if (inscripcionController.porId(idInscripcion) != null) {
+            inscripcionController.borrar(idInscripcion);
+            showAlert("Exito", "La inscripción ha sido borrada.");
+        } else {
+            showAlert("Error", "No se ha encontrado la inscripción.");
+        }
     }
     @FXML
     protected void mostrarInscripcionSelec() throws IOException {
@@ -354,3 +389,5 @@ public class ControladorFX {
         stage.show();
     }
 }
+
+

@@ -14,8 +14,8 @@
          </font>
       </Label>
       <Label layoutX="100.0" layoutY="183.0" text="Introduce el ID de la Inscripción:" />
-      <TextField layoutX="329.0" layoutY="179.0" prefHeight="25.0" prefWidth="115.0" />
-      <Button layoutX="241.0" layoutY="281.0" mnemonicParsing="false" text="Eliminar Inscripción" />
+      <TextField fx:id="idInscripcionField" layoutX="329.0" layoutY="179.0" prefHeight="25.0" prefWidth="115.0" />
+      <Button layoutX="241.0" layoutY="281.0" mnemonicParsing="false" onAction="#borrarInscripcion" text="Eliminar Inscripción" />
       <Button layoutX="74.0" layoutY="328.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Volver" />
    </children>
 </AnchorPane>

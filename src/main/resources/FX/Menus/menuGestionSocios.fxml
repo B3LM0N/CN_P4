@@ -13,7 +13,7 @@
          </font>
       </Label>
       <Button layoutX="203.0" layoutY="97.0" mnemonicParsing="false" onAction="#crearSocioForm" prefHeight="25.0" prefWidth="202.0" text="Crear nuevo Socio" />
-      <Button layoutX="203.0" layoutY="141.0" mnemonicParsing="false" onAction="#cambiarSeguroSocio" prefHeight="25.0" prefWidth="202.0" text="Cambiar Seguro de un Socio" />
+      <Button layoutX="203.0" layoutY="141.0" mnemonicParsing="false" onAction="#cambiarSeguroSocioSelec" prefHeight="25.0" prefWidth="202.0" text="Cambiar Seguro de un Socio" />
       <Button layoutX="203.0" layoutY="188.0" mnemonicParsing="false" onAction="#borrarSocioSelec" prefHeight="25.0" prefWidth="202.0" text="Eliminar un Socio" />
       <Button layoutX="203.0" layoutY="231.0" mnemonicParsing="false" onAction="#mostrarSociosSelec" prefHeight="25.0" prefWidth="202.0" text="Mostrar Socios" />
       <Button layoutX="203.0" layoutY="272.0" mnemonicParsing="false" onAction="#mostrarFacturaSelec" prefHeight="25.0" prefWidth="202.0" text="Mostrar Factura" />

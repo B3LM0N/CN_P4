@@ -37,11 +37,13 @@ public class InscripcionController {
 
         /**
          * Crea una nueva inscripción.
-         * @param idSocio El identificador del socio que se inscribe.
-         * @param idExcursion El identificador de la excursión a la que se inscribe.
+         *
+         * @param idSocio          El identificador del socio que se inscribe.
+         * @param idExcursion      El identificador de la excursión a la que se inscribe.
          * @param fechaInscripcion La fecha de inscripción.
+         * @return
          */
-        public void crear(int idSocio, int idExcursion, LocalDate fechaInscripcion) {
+        public Inscripcion crear(int idSocio, int idExcursion, LocalDate fechaInscripcion) {
                 Socio socio = socioDAO.porId(idSocio);
                 Excursion excursion = excursionDAO.porId(idExcursion);
                 Inscripcion inscripcion = new Inscripcion();
@@ -50,6 +52,7 @@ public class InscripcionController {
                 inscripcion.setExcursion(excursion);
                 inscripcion.setFechaInscripcion(Date.from(fechaInscripcion.atStartOfDay(ZoneId.systemDefault()).toInstant()));
                 inscripcionDAO.crear(inscripcion);
+            return inscripcion;
         }
 
         /**
