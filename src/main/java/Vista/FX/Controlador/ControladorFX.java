@@ -61,6 +61,8 @@ public class ControladorFX {
     private DatePicker fechaFinal;
     @FXML
     private ListView<Excursion> listaExcursiones;
+    @FXML
+    private ListView<Socio> listaSocios;
 
 
     @FXML
@@ -79,6 +81,9 @@ public class ControladorFX {
     }
     public void setListaExcursiones(ObservableList<Excursion> excursiones) {
         listaExcursiones.setItems(excursiones);
+    }
+    public void setListaSocios(ObservableList<Socio> socios) {
+        listaSocios.setItems(socios);
     }
 
     @FXML
@@ -257,12 +262,22 @@ public class ControladorFX {
     }
     @FXML
     protected void mostrarTodosSocios() throws IOException {
+        // Obtén todas las excursiones
+        List<Socio> socios = socioController.mostrar();
+
         // Carga el archivo FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FX/Socios/mostrarSocios.fxml"));
+        AnchorPane root = loader.load();
+
+        // Obtén el controlador y establece la lista de todas las excursiones
+        ControladorFX controlador = loader.getController();
+        controlador.setListaSocios(FXCollections.observableArrayList(socios));
+
+        // Configura y muestra la ventana
         Stage stage = new Stage();
-        stage.setTitle("Mostrar Socios");
+        stage.setTitle("Mostrar Todas las Excursiones");
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.setScene(new Scene(loader.load()));
+        stage.setScene(new Scene(root));
         stage.show();
     }
     @FXML
