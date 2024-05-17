@@ -13,7 +13,7 @@
             <Font name="Calibri" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="224.0" layoutY="121.0" mnemonicParsing="false" onAction="#crearExcursion" text="Crear una nueva Excursion" />
+      <Button layoutX="224.0" layoutY="121.0" mnemonicParsing="false" onAction="#crearExcursionForm" text="Crear una nueva Excursion" />
       <Button layoutX="57.0" layoutY="339.0" mnemonicParsing="false" onAction="#cerrarVentana" prefHeight="25.0" prefWidth="77.0" text="Volver" />
       <Label layoutX="57.0" layoutY="183.0" text="Mostrar las Excursiones por fecha:" />
       <Label layoutX="95.0" layoutY="220.0" text="Fecha Inicio:" />
