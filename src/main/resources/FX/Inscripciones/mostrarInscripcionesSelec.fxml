@@ -19,8 +19,8 @@
       <Label layoutX="75.0" layoutY="152.0" text="Búsqueda con Filtros" />
       <Label layoutX="138.0" layoutY="192.0" minWidth="41.0" prefHeight="17.0" text="ID del Socio:" />
       <TextField layoutX="257.0" layoutY="188.0" minWidth="63.0" prefHeight="25.0" prefWidth="86.0" />
-      <Button layoutX="497.0" layoutY="188.0" mnemonicParsing="false" onAction="#mostrarInscripcionPorSocio" text="Buscar" />
-      <Button layoutX="497.0" layoutY="257.0" mnemonicParsing="false" onAction="#mostrarInscripcionPorFecha" text="Buscar" />
+      <Button layoutX="474.0" layoutY="188.0" mnemonicParsing="false" onAction="#mostrarInscripcionPorSocio" text="Buscar por Socio" />
+      <Button layoutX="474.0" layoutY="257.0" mnemonicParsing="false" onAction="#mostrarInscripcionPorFecha" text="Buscar por Fecha" />
       <Button layoutX="219.0" layoutY="321.0" mnemonicParsing="false" onAction="#mostrarInscripcionPorSocioYFecha" text="Buscar con Todos los Filtros" />
       <Label layoutX="138.0" layoutY="237.0" text="Fecha Inicio:" />
       <Label layoutX="138.0" layoutY="274.0" text="Fecha Fin:" />
