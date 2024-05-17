@@ -1,4 +1,4 @@
-package org.example;
+package Vista;
 
 import Controlador.FederacionController;
 import Controlador.*;
@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class Main {
+public class Consola {
 
     static SocioController socioController = new SocioController();
     static ExcursionController excursionController = new ExcursionController();
@@ -20,11 +20,13 @@ public class Main {
     static SegurosController segurosController = new SegurosController();
     static FederacionController federacionController = new FederacionController();
 
-    public static void main(String[] args) throws ParseException {
-        menuPrincipal();
-    }
 
-    public static void menuPrincipal() throws ParseException{
+
+
+
+
+
+    public static void menuPrincipalConsola() throws ParseException{
         boolean finalizarPrograma = false;
         System.out.println("Bienvenido");
         while (!finalizarPrograma) {
@@ -370,7 +372,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("\nVolviendo al menu principal...");
-                    menuPrincipal();
+                    menuPrincipalConsola();
             }
 
         }
