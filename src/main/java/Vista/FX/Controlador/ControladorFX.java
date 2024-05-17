@@ -2,15 +2,15 @@ package Vista.FX.Controlador;
 
 import Controlador.ExcursionController;
 import Controlador.InscripcionController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import Modelo.Entidades.*;
@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 
 public class ControladorFX {
 
@@ -54,6 +55,12 @@ public class ControladorFX {
     private TextField idExcursionField;
     @FXML
     private TextField idInscripcionField;
+    @FXML
+    private DatePicker fechaInicial;
+    @FXML
+    private DatePicker fechaFinal;
+    @FXML
+    private ListView<Excursion> listaExcursiones;
 
 
     @FXML
@@ -70,7 +77,9 @@ public class ControladorFX {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
+    public void setListaExcursiones(ObservableList<Excursion> excursiones) {
+        listaExcursiones.setItems(excursiones);
+    }
 
     @FXML
     protected void menuGestionExcursiones() throws IOException {
@@ -106,16 +115,28 @@ public class ControladorFX {
     }
     @FXML
     protected void mostrarExcursionesPorFechas() throws IOException {
+        Date fechaInicio = Date.from(fechaInicial.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date fechaFin = Date.from(fechaFinal.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+        if (fechaInicio.after(fechaFin)) {
+            showAlert("Error", "No es ha sido posible seleccionar las fechas.");
+            return;
+        }
+        // Filtra las excursiones por fechas
+        List<Excursion> excursionesFiltradas = excursionController.mostrar(fechaInicio, fechaFin);
         // Carga el archivo FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FX/Excursiones/mostrarExcursion.fxml"));
+        AnchorPane root = loader.load();
+        // Obtén el controlador y establece la lista de excursiones filtradas
+        ControladorFX controlador = loader.getController();
+        controlador.setListaExcursiones(FXCollections.observableArrayList(excursionesFiltradas));
+        // Configura y muestra la ventana
         Stage stage = new Stage();
         stage.setTitle("Mostrar Excursiones");
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.setScene(new Scene(loader.load()));
+        stage.setScene(new Scene(root));
         stage.show();
     }
-
-
     @FXML
     protected void menuGestionSocios() throws IOException {
         // Carga el archivo FXML
@@ -389,5 +410,4 @@ public class ControladorFX {
         stage.show();
     }
 }
-
 

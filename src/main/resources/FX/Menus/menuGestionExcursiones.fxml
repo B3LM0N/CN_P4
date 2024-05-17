@@ -18,8 +18,8 @@
       <Label layoutX="57.0" layoutY="183.0" text="Mostrar las Excursiones por fecha:" />
       <Label layoutX="95.0" layoutY="220.0" text="Fecha Inicio:" />
       <Label layoutX="301.0" layoutY="220.0" text="Fecha Fin:" />
-      <DatePicker layoutX="174.0" layoutY="216.0" prefHeight="25.0" prefWidth="115.0" />
-      <DatePicker layoutX="365.0" layoutY="216.0" prefHeight="25.0" prefWidth="115.0" />
+      <DatePicker fx:id="fechaInicial" layoutX="174.0" layoutY="216.0" prefHeight="25.0" prefWidth="115.0" />
+      <DatePicker fx:id="fechaFinal" layoutX="365.0" layoutY="216.0" prefHeight="25.0" prefWidth="115.0" />
       <Button layoutX="276.0" layoutY="261.0" mnemonicParsing="false" onAction="#mostrarExcursionesPorFechas" text="Buscar" />
    </children>
 </AnchorPane>
