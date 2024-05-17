@@ -63,6 +63,8 @@ public class ControladorFX {
     private ListView<Excursion> listaExcursiones;
     @FXML
     private ListView<Socio> listaSocios;
+    @FXML
+    private ChoiceBox<String> choiceBoxTipoSocio;
 
 
     @FXML
@@ -281,14 +283,33 @@ public class ControladorFX {
         stage.show();
     }
     @FXML
-    protected void mostrarSocioEstandar() throws IOException {
-        // Carga el archivo FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FX/Socios/mostrarSocios.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Mostrar Socios");
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.setScene(new Scene(loader.load()));
-        stage.show();
+    protected void mostrarSociosPorTipo() throws IOException {
+        // Obtener el tipo de socio seleccionado del ChoiceBox
+        String tipoSocioSeleccionado = choiceBoxTipoSocio.getValue();
+
+        // Verificar si se ha seleccionado un tipo de socio
+        if (tipoSocioSeleccionado != null) {
+            // Obtener la lista de socios del tipo seleccionado
+            List<Socio> sociosFiltrados = socioController.mostrarPorTipo(tipoSocioSeleccionado);
+
+            // Cargar el archivo FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FX/Socios/mostrarSocios.fxml"));
+            AnchorPane root = loader.load();
+
+            // Obtener el controlador y establecer la lista de socios filtrados
+            ControladorFX controlador = loader.getController();
+            controlador.setListaSocios(FXCollections.observableArrayList(sociosFiltrados));
+
+            // Configurar y mostrar la ventana
+            Stage stage = new Stage();
+            stage.setTitle("Mostrar Socios " + tipoSocioSeleccionado);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } else {
+            showAlert("Error","Selecciona un Tipo de Socio");
+        }
+
     }
     @FXML
     protected void mostrarSocioFederado() throws IOException {
@@ -424,5 +445,7 @@ public class ControladorFX {
         stage.setScene(new Scene(loader.load()));
         stage.show();
     }
+
+
 }
 
