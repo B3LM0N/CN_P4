@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.FX.Controlador.ControladorFX">
+<AnchorPane styleClass="custom-anchor-pane" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.FX.Controlador.ControladorFX">
    <children>
-      <Label layoutX="235.0" layoutY="48.0" text="Mostrar Socios" underline="true">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
+      <Label layoutX="185.0" layoutY="42.0" styleClass="titleFormat" text="Mostrar Socios" />
 
-      <Button layoutX="227.0" layoutY="126.0" mnemonicParsing="false" onAction="#mostrarTodosSocios" text="Mostrar todos los Socios" />
+      <Button layoutX="228.0" layoutY="138.0" mnemonicParsing="false" onAction="#mostrarTodosSocios" styleClass="buttonMenus" text="Mostrar todos los Socios" />
 
-      <Label layoutX="105.0" layoutY="192.0" text="Selecciona el Tipo de Socio:" />
-      <ChoiceBox fx:id="choiceBoxTipoSocio" layoutX="292.0" layoutY="188.0" prefWidth="150.0" >
+      <Label layoutX="108.0" layoutY="227.0" styleClass="textFormat" text="Selecciona el Tipo de Socio:" />
+      <ChoiceBox fx:id="choiceBoxTipoSocio" layoutX="310.0" layoutY="218.0" prefHeight="39.0" prefWidth="135.0" styleClass="choiceBox">
           <items>
               <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Estandar" />
@@ -29,8 +24,8 @@
           </items>
       </ChoiceBox>
 
-      <Button layoutX="224.0" layoutY="238.0" mnemonicParsing="false" onAction="#mostrarSociosPorTipo" text="Buscar Socios por Tipo" />
+      <Button layoutX="224.0" layoutY="280.0" mnemonicParsing="false" onAction="#mostrarSociosPorTipo" styleClass="buttonMenus" text="Buscar Socios por Tipo" />
 
-       <Button layoutX="80.0" layoutY="330.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Volver" />
+       <Button layoutX="40.0" layoutY="345.0" mnemonicParsing="false" onAction="#cerrarVentana" styleClass="buttonVolver" text="Volver" />
    </children>
 </AnchorPane>

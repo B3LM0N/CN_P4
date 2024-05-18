@@ -12,7 +12,7 @@
 
         <Button layoutX="219.0" layoutY="101.0" mnemonicParsing="false" onAction="#mostrarInscripcionSinFiltro" styleClass="butMenuBig" text="Mostrar todas las inscripciones" />
 
-        <Label layoutX="127.0" layoutY="139.0" prefHeight="30.0" prefWidth="253.0" styleClass="textFormat" text="Búsqueda con filtros" />
+        <Label layoutX="127.0" layoutY="139.0" prefHeight="30.0" prefWidth="253.0" style="-fx-font-weight: bold" styleClass="textFormat" text="Búsqueda con filtros" />
 
         <Label layoutX="127.0" layoutY="180.0" styleClass="textFormat" text="ID del Socio:" />
         <TextField fx:id="idSocioInsField" alignment="CENTER" layoutX="230.0" layoutY="174.0" prefHeight="32.0" prefWidth="110.0" styleClass="textInput" />

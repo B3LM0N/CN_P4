@@ -102,7 +102,7 @@
     -fx-background-color: #d01b15;
     -fx-pref-height: 25.0;
     -fx-pref-width: 135.0;
-    -fx-effect: dropshadow(three-pass-box, #000, 13, 0, 0, 0); /* Ajusta el valor de la sombra para que sea más pronunciada */
+    -fx-effect: dropshadow(three-pass-box, #000, 15, 0, 0, 0); /* Ajusta el valor de la sombra para que sea más pronunciada */
     -fx-border-width: 2px; /* Ajusta el ancho del borde */
     -fx-border-color: #6f100f; /* Cambia el color del borde al pasar el cursor */
     -fx-border-insets: 0 0 -2px 0;

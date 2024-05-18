@@ -4,21 +4,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.FX.Controlador.ControladorFX">
+<AnchorPane styleClass="custom-anchor-pane" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.FX.Controlador.ControladorFX">
    <children>
-      <Label layoutX="238.0" layoutY="70.0" text="Eliminar socio" underline="true">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
+      <Label layoutX="187.0" layoutY="48.0" styleClass="titleFormat" text="Eliminar socio" />
 
-      <Label layoutX="107.0" layoutY="159.0" text="Introduce el ID del Socio: " />
-      <TextField fx:id="idSocioField" layoutX="323.0" layoutY="155.0" />
+      <Label layoutX="131.0" layoutY="159.0" styleClass="textFormat" text="Introduce el ID del Socio: " />
+      <TextField fx:id="idSocioField" alignment="CENTER" layoutX="321.0" layoutY="153.0" prefHeight="32.0" prefWidth="124.0" styleClass="textInput" />
 
-      <Button layoutX="274.0" layoutY="246.0" mnemonicParsing="false" onAction="#borrarSocio" text="Borrar" />
+      <Button layoutX="218.0" layoutY="250.0" mnemonicParsing="false" onAction="#borrarSocio" styleClass="buttonMenus" text="Eliminar" />
 
-      <Button layoutX="43.0" layoutY="344.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Volver" />
+      <Button layoutX="40.0" layoutY="345.0" mnemonicParsing="false" onAction="#cerrarVentana" styleClass="buttonVolver" text="Volver" />
    </children>
 </AnchorPane>

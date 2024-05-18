@@ -7,7 +7,7 @@
 
 <AnchorPane styleClass="custom-anchor-pane" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.FX.Controlador.ControladorFX">
    <children>
-      <Label layoutX="138.0" layoutY="28.0" styleClass="titleFormat" text="Lista de Excursiones" underline="true" />
+      <Label layoutX="138.0" layoutY="28.0" styleClass="titleFormat" text="Lista de Excursiones" />
 
       <Label layoutX="49.0" layoutY="100.0" styleClass="textFormat" text="Excursiones encontradas entre las fechas seleccionadas:" />
 

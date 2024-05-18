@@ -22,7 +22,7 @@
       <Label layoutX="83.0" layoutY="245.0" styleClass="textFormat" text="Establece un precio de inscripción:" />
       <TextField fx:id="precioInscripcionField" alignment="CENTER" layoutX="333.0" layoutY="239.0" styleClass="textInput" />
 
-      <Label layoutX="345.0" layoutY="279.0" styleClass="textFormat" text="Completa todos los campos*" />
+      <Label layoutX="345.0" layoutY="279.0" style="-fx-font-weight: bold" styleClass="textFormat" text="Completa todos los campos*" />
 
       <Button layoutX="218.0" layoutY="306.0" mnemonicParsing="false" onAction="#crearExcursion" styleClass="buttonMenus" text="Crear Excursion" />
 
