@@ -1,7 +1,9 @@
 package Modelo.Entidades;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Socio {
@@ -88,13 +90,16 @@ public class Socio {
 
     @Override
     public String toString() {
-        return "Socio{" +
-                "idSocio=" + idSocio +
-                ", nombre='" + nombre + '\'' +
-                ", tipoSocio='" + tipoSocio + '\'' +
-                ", federado=" + federado +
-                ", estandar=" + estandar +
-                ", infantil=" + infantil +
-                '}';
+        if (Objects.equals(tipoSocio, "Estandar")) {
+            return "Socio con id número " + idSocio + ", llamado: " + nombre + ", es un socio " + tipoSocio + ".\n" +
+                    "Su nif es: " + estandar.getNif() + ", y tiene contratado un seguro " + estandar.getSeguroContratado().seguroContratado + ".\n";
+        } else if (Objects.equals(tipoSocio, "Federado")) {
+            return "Socio con id número " + idSocio + ", llamado: " + nombre + ", es un socio " + tipoSocio + ".\n" +
+                    "Su nif es: " + federado.getNif() + ", y su federación se llama " + federado.getFederacion().getNombreFederacion() + ".\n";
+        } else {
+            return "Socio con id número " + idSocio + ", llamado: " + nombre + ", es un socio " + tipoSocio + ".\n" +
+                    "El id del tutor es: " + infantil.getIdTutor() + ".\n";
+
+        }
     }
 }

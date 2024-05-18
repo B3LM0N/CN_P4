@@ -118,8 +118,6 @@ public class SocioController {
     }
 
     public Estandar modificarSeguroSocio(int idSocio, int nuevoSeguroContratado) {
-
-
        return socioDAO.modificarSeguroSocio(idSocio,nuevoSeguroContratado);
 
     }

@@ -12,13 +12,15 @@
             fx:controller="Vista.FX.Controlador.ControladorFX"
             prefHeight="400.0" prefWidth="600.0">
     <children>
-        <Button layoutX="73.0" layoutY="340.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Volver" />
-        <ListView fx:id="listaSocios" layoutX="117.0" layoutY="107.0" prefHeight="200.0" prefWidth="367.0" />
         <Label layoutX="212.0" layoutY="34.0" text="Lista de Socios" underline="true">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
+
         <Label layoutX="117.0" layoutY="90.0" text="Listado de los socios encontrados:" />
+        <ListView fx:id="listaSocios" layoutX="117.0" layoutY="107.0" prefHeight="200.0" prefWidth="367.0" />
+
+        <Button layoutX="73.0" layoutY="340.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Volver" />
     </children>
 </AnchorPane>

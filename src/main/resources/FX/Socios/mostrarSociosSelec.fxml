@@ -15,8 +15,9 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="80.0" layoutY="330.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Volver" />
+
       <Button layoutX="227.0" layoutY="126.0" mnemonicParsing="false" onAction="#mostrarTodosSocios" text="Mostrar todos los Socios" />
+
       <Label layoutX="105.0" layoutY="192.0" text="Selecciona el Tipo de Socio:" />
       <ChoiceBox fx:id="choiceBoxTipoSocio" layoutX="292.0" layoutY="188.0" prefWidth="150.0" >
           <items>
@@ -27,6 +28,9 @@
               </FXCollections>
           </items>
       </ChoiceBox>
+
       <Button layoutX="224.0" layoutY="238.0" mnemonicParsing="false" onAction="#mostrarSociosPorTipo" text="Buscar Socios por Tipo" />
+
+       <Button layoutX="80.0" layoutY="330.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Volver" />
    </children>
 </AnchorPane>

@@ -16,49 +16,29 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="95.0" layoutY="92.0" text="Selecciona el Tipo de Socio:" />
+
       <Label layoutX="96.0" layoutY="62.0" text="Ingresa el Nombre del nuevo Socio: " />
       <TextField id="nombre1" fx:id="nombreField" layoutX="301.0" layoutY="58.0" />
-      <TextField fx:id="nifFieldEstandar" layoutX="96.0" layoutY="151.0" prefHeight="25.0" prefWidth="117.0" />
-      <TextField fx:id="nifFieldFederado" layoutX="96.0" layoutY="219.0" prefHeight="25.0" prefWidth="117.0" />
-      <TextField fx:id="nombreFederacionField" layoutX="331.0" layoutY="219.0" prefHeight="25.0" prefWidth="117.0" />
-      <TextField fx:id="idTutorField" layoutX="192.0" layoutY="287.0" prefHeight="25.0" prefWidth="98.0" />
-      <Button layoutX="262.0" layoutY="350.0" mnemonicParsing="false" onAction="#crearSocio" text="Crear Socio" />
-      <Button layoutX="46.0" layoutY="350.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Volver" />
-      <Label layoutX="353.0" layoutY="334.0" text="*Rellenar solo el tipo de socio necesario">
-         <font>
-            <Font size="11.0" />
-         </font>
-      </Label>
+
+      <Label layoutX="95.0" layoutY="92.0" text="Selecciona el Tipo de Socio:" />
+      <ChoiceBox fx:id="tipoSocio" layoutX="301.0" layoutY="88.0" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Estandar" />
+               <String fx:value="Federado" />
+               <String fx:value="Infantil" />
+            </FXCollections>
+         </items>
+      </ChoiceBox>
+
       <Label layoutX="62.0" layoutY="125.0" text="Socio Estandar" underline="true">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
       <Label layoutX="72.0" layoutY="155.0" text="NIF: " />
+      <TextField fx:id="nifFieldEstandar" layoutX="96.0" layoutY="151.0" prefHeight="25.0" prefWidth="117.0" />
       <Label layoutX="245.0" layoutY="155.0" text="Tipo de Seguro: " />
-      <Label layoutX="60.0" layoutY="192.0" text="Socio Federado" underline="true">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="74.0" layoutY="223.0" text="NIF:" />
-      <Label layoutX="258.0" layoutY="223.0" text="Federación:" />
-      <Label layoutX="58.0" layoutY="259.0" text="Socio Infantil" underline="true">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="70.0" layoutY="291.0" text="ID del Socio Tutor:" />
-      <ChoiceBox fx:id="tipoSocio" layoutX="301.0" layoutY="88.0" prefWidth="150.0">
-              <items>
-                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Estandar" />
-                    <String fx:value="Federado" />
-                    <String fx:value="Infantil" />
-                 </FXCollections>
-              </items>
-      </ChoiceBox>
       <ChoiceBox fx:id="tipoSeguro" layoutX="353.0" layoutY="151.0" prefHeight="25.0" prefWidth="117.0" >
          <items>
             <FXCollections fx:factory="observableArrayList">
@@ -67,5 +47,33 @@
             </FXCollections>
          </items>
       </ChoiceBox>
+
+      <Label layoutX="60.0" layoutY="192.0" text="Socio Federado" underline="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="74.0" layoutY="223.0" text="NIF:" />
+      <TextField fx:id="nifFieldFederado" layoutX="96.0" layoutY="219.0" prefHeight="25.0" prefWidth="117.0" />
+      <Label layoutX="258.0" layoutY="223.0" text="Federación:" />
+      <TextField fx:id="nombreFederacionField" layoutX="331.0" layoutY="219.0" prefHeight="25.0" prefWidth="117.0" />
+
+      <Label layoutX="58.0" layoutY="259.0" text="Socio Infantil" underline="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="70.0" layoutY="291.0" text="ID del Socio Tutor:" />
+      <TextField fx:id="idTutorField" layoutX="192.0" layoutY="287.0" prefHeight="25.0" prefWidth="98.0" />
+
+      <Label layoutX="353.0" layoutY="334.0" text="*Rellenar solo el tipo de socio necesario">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+
+      <Button layoutX="262.0" layoutY="350.0" mnemonicParsing="false" onAction="#crearSocio" text="Crear Socio" />
+
+      <Button layoutX="46.0" layoutY="350.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Volver" />
    </children>
 </AnchorPane>

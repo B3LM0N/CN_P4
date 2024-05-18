@@ -4,22 +4,25 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.FX.Controlador.ControladorFX">
+<AnchorPane styleClass="custom-anchor-pane" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.FX.Controlador.ControladorFX">
    <children>
-      <Label layoutX="192.0" layoutY="39.0" prefHeight="56.0" prefWidth="219.0" text="Selecciona una opción" textAlignment="CENTER" underline="true">
-         <font>
-            <Font name="Calibri" size="24.0" />
-         </font>
-      </Label>
-      <Button layoutX="224.0" layoutY="121.0" mnemonicParsing="false" onAction="#crearExcursionForm" text="Crear una nueva Excursion" />
-      <Button layoutX="57.0" layoutY="339.0" mnemonicParsing="false" onAction="#cerrarVentana" prefHeight="25.0" prefWidth="77.0" text="Volver" />
-      <Label layoutX="57.0" layoutY="183.0" text="Mostrar las Excursiones por fecha:" />
-      <Label layoutX="95.0" layoutY="220.0" text="Fecha Inicio:" />
-      <Label layoutX="301.0" layoutY="220.0" text="Fecha Fin:" />
-      <DatePicker fx:id="fechaInicial" layoutX="174.0" layoutY="216.0" prefHeight="25.0" prefWidth="115.0" />
-      <DatePicker fx:id="fechaFinal" layoutX="365.0" layoutY="216.0" prefHeight="25.0" prefWidth="115.0" />
-      <Button layoutX="276.0" layoutY="261.0" mnemonicParsing="false" onAction="#mostrarExcursionesPorFechas" text="Buscar" />
+      <Label layoutX="108.0" layoutY="30.0" styleClass="titleFormat" text="Gestión de excursiones" />
+
+      <Label layoutX="57.0" layoutY="92.0" styleClass="textFormat" text="Selecciona una opción" />
+
+      <Button layoutX="224.0" layoutY="129.0" mnemonicParsing="false" onAction="#crearExcursionForm" styleClass="buttonMenus" text="Nueva Excursion" />
+
+      <Label layoutX="57.0" layoutY="182.0" styleClass="textFormat" text="Mostrar las Excursiones por fecha:" />
+
+      <Label layoutX="92.0" layoutY="220.0" styleClass="textFormat" text="Fecha Inicio:" />
+      <DatePicker fx:id="fechaInicial" layoutX="174.0" layoutY="216.0" prefHeight="25.0" prefWidth="115.0" styleClass="datePickerFormat" />
+
+      <Label layoutX="308.0" layoutY="220.0" styleClass="textFormat" text="Fecha Fin:" />
+      <DatePicker fx:id="fechaFinal" layoutX="375.0" layoutY="216.0" prefHeight="25.0" prefWidth="115.0" styleClass="datePickerFormat" />
+
+      <Button layoutX="224.0" layoutY="274.0" mnemonicParsing="false" onAction="#mostrarExcursionesPorFechas" styleClass="buttonMenus" text="Buscar" />
+
+      <Button layoutX="40.0" layoutY="345.0" mnemonicParsing="false" onAction="#cerrarVentana" styleClass="buttonVolver" text="Volver" />
    </children>
 </AnchorPane>

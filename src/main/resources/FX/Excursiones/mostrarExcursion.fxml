@@ -4,17 +4,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.FX.Controlador.ControladorFX">
+<AnchorPane styleClass="custom-anchor-pane" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.FX.Controlador.ControladorFX">
    <children>
-      <Button layoutX="73.0" layoutY="340.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Volver" />
-      <ListView fx:id="listaExcursiones" layoutX="117.0" layoutY="107.0" prefHeight="200.0" prefWidth="367.0" />
-      <Label layoutX="212.0" layoutY="34.0" text="Lista de Excursiones" underline="true">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="117.0" layoutY="90.0" text="Excursiones encontradas entre las fechas seleccionadas:" />
+      <Label layoutX="138.0" layoutY="28.0" styleClass="titleFormat" text="Lista de Excursiones" underline="true" />
+
+      <Label layoutX="49.0" layoutY="100.0" styleClass="textFormat" text="Excursiones encontradas entre las fechas seleccionadas:" />
+
+      <ListView fx:id="listaExcursiones" layoutX="97.0" layoutY="129.0" prefHeight="191.0" prefWidth="406.0" styleClass="listViewFormat" />
+
+      <Button layoutX="40.0" layoutY="345.0" mnemonicParsing="false" onAction="#cerrarVentana" styleClass="buttonVolver" text="Volver" />
    </children>
 </AnchorPane>

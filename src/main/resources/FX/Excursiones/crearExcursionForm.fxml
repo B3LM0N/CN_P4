@@ -5,24 +5,27 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.FX.Controlador.ControladorFX">
+<AnchorPane styleClass="custom-anchor-pane" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.FX.Controlador.ControladorFX">
    <children>
-      <Label layoutX="175.0" layoutY="41.0" text="Completa todos los campos" underline="true">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="98.0" layoutY="112.0" text="Indica una breve descripcion:" />
-      <Label layoutX="100.0" layoutY="171.0" text="Selecciona la fecha de inicio:" />
-      <Label layoutX="107.0" layoutY="226.0" text="Indica la duración en días:" />
-      <Label layoutX="84.0" layoutY="279.0" text="Establece un precio de inscirpcion:" />
-      <DatePicker fx:id="fechaExcursionDate" layoutX="341.0" layoutY="167.0" prefHeight="25.0" prefWidth="182.0" />
-      <TextField fx:id="precioInscripcionField" layoutX="341.0" layoutY="275.0" prefHeight="25.0" prefWidth="182.0" />
-      <TextField fx:id="duracionDiasField" layoutX="341.0" layoutY="222.0" prefHeight="25.0" prefWidth="182.0" />
-      <TextField fx:id="descripcionField" layoutX="341.0" layoutY="108.0" prefHeight="25.0" prefWidth="182.0" />
-      <Button layoutX="228.0" layoutY="335.0" mnemonicParsing="false" onAction="#crearExcursion" prefHeight="25.0" prefWidth="165.0" text="Crear Excursion" />
-      <Button layoutX="58.0" layoutY="335.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Volver" />
+      <Label layoutX="182.0" layoutY="39.0" styleClass="titleFormat" text="Crear excursión" />
+
+      <Label layoutX="116.0" layoutY="116.0" styleClass="textFormat" text="Indica una breve descripción:" />
+      <TextField fx:id="descripcionField" alignment="CENTER" layoutX="333.0" layoutY="110.0" styleClass="textInput" />
+
+      <Label layoutX="120.0" layoutY="160.0" styleClass="textFormat" text="Selecciona la fecha de inicio:" />
+      <DatePicker fx:id="fechaExcursionDate" layoutX="333.0" layoutY="153.0" styleClass="datePickerFormat" />
+
+      <Label layoutX="136.0" layoutY="202.0" prefWidth="160.0" styleClass="textFormat" text="Indica la duración en días:" />
+      <TextField fx:id="duracionDiasField" alignment="CENTER" layoutX="333.0" layoutY="196.0" styleClass="textInput" />
+
+      <Label layoutX="83.0" layoutY="245.0" styleClass="textFormat" text="Establece un precio de inscripción:" />
+      <TextField fx:id="precioInscripcionField" alignment="CENTER" layoutX="333.0" layoutY="239.0" styleClass="textInput" />
+
+      <Label layoutX="345.0" layoutY="279.0" styleClass="textFormat" text="Completa todos los campos*" />
+
+      <Button layoutX="218.0" layoutY="306.0" mnemonicParsing="false" onAction="#crearExcursion" styleClass="buttonMenus" text="Crear Excursion" />
+
+      <Button layoutX="40.0" layoutY="345.0" mnemonicParsing="false" onAction="#cerrarVentana" styleClass="buttonVolver" text="Volver" />
    </children>
 </AnchorPane>

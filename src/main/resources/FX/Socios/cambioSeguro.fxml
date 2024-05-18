@@ -11,9 +11,10 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.FX.Controlador.ControladorFX">
    <children>
       <Label layoutX="251.0" layoutY="60.0" text="Cambio de Seguro" />
+
       <Label layoutX="93.0" layoutY="140.0" text="Introduce el ID del Socio Estandar: " />
       <TextField fx:id="idSocioField" layoutX="301.0" layoutY="136.0" prefHeight="25.0" prefWidth="118.0" />
-      <Button layoutX="67.0" layoutY="313.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Volver" />
+
       <Label layoutX="108.0" layoutY="192.0" text="Selecciona el Tipo de Seguro:" />
       <ChoiceBox fx:id="tipoSeguro" layoutX="301.0" layoutY="188.0" prefHeight="25.0" prefWidth="118.0" >
          <items>
@@ -23,6 +24,9 @@
             </FXCollections>
          </items>
       </ChoiceBox>
+
       <Button layoutX="267.0" layoutY="266.0" mnemonicParsing="false" onAction="#cambiarSeguroSocio" text="Confirmar" />
+
+      <Button layoutX="67.0" layoutY="313.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Volver" />
    </children>
 </AnchorPane>

@@ -1,0 +1,216 @@
+.custom-anchor-pane {
+    -fx-background-color: linear-gradient(to bottom, #FFFFFF, #802ce8); /* Gradiente de arriba hacia abajo desde blanco hasta ##270e8a */
+    -fx-pref-height: 400.0;
+    -fx-pref-width: 600.0;
+}
+
+.titleFormat {
+    -fx-font-size: 37px;
+    -fx-text-fill: #13136b;
+    -fx-underline: true;
+}
+
+.textFormat {
+    -fx-font-size: 14px;
+    -fx-text-fill: #13136b;
+}
+.butPrincipal {
+    -fx-content-display: CENTER;
+    -fx-layout-x: 230.0;
+    -fx-layout-y: 139.0;
+    -fx-mnemonic-parsing: false;
+    -fx-pref-height: 25.0;
+    -fx-pref-width: 195.0;
+    -fx-background-color: #add8e6;
+    -fx-border-color: #2c3e50;
+    -fx-background-radius: 40;
+    -fx-border-radius: 40;
+    -fx-effect: dropshadow(three-pass-box, #000, 10, 0, 0, 0);
+    -fx-focus-traversable: true;
+    -fx-faint-focus-color: #ff0000;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+    -fx-border-insets: 0 0 -2px 0;
+}
+.butPrincipal:hover {
+    -fx-background-color: #0d3eaa;
+    -fx-pref-height: 25.0;
+    -fx-pref-width: 195.0;
+    -fx-effect: dropshadow(three-pass-box, #000, 18, 0, 0, 0); /* Ajusta el valor de la sombra para que sea más pronunciada */
+    -fx-border-width: 2px; /* Ajusta el ancho del borde */
+    -fx-border-color: #000; /* Cambia el color del borde al pasar el cursor */
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-border-insets: 0 0 -2px 0;
+}
+
+.buttonMenus {
+    -fx-content-display: CENTER;
+    -fx-layout-x: 230.0;
+    -fx-layout-y: 139.0;
+    -fx-mnemonic-parsing: false;
+    -fx-pref-height: 25.0;
+    -fx-pref-width: 165.0;
+    -fx-background-color: #add8e6;
+    -fx-border-color: #2c3e50;
+    -fx-background-radius: 40;
+    -fx-border-radius: 40;
+    -fx-effect: dropshadow(three-pass-box, #000, 10, 0, 0, 0);
+    -fx-focus-traversable: true;
+    -fx-faint-focus-color: #ff0000;
+    -fx-cursor: hand;
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+    -fx-border-insets: 0 0 -2px 0;
+}
+
+.buttonMenus:hover {
+    -fx-background-color: #0d3eaa;
+    -fx-pref-height: 25.0;
+    -fx-pref-width: 165.0;
+    -fx-effect: dropshadow(three-pass-box, #000, 15, 0, 0, 0); /* Ajusta el valor de la sombra para que sea más pronunciada */
+    -fx-border-width: 2px; /* Ajusta el ancho del borde */
+    -fx-border-color: #000; /* Cambia el color del borde al pasar el cursor */
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-border-insets: 0 0 -2px 0;
+}
+
+.buttonVolver {
+    -fx-content-display: CENTER;
+    -fx-layout-x: 230.0;
+    -fx-layout-y: 139.0;
+    -fx-mnemonic-parsing: false;
+    -fx-pref-height: 25.0;
+    -fx-pref-width: 135.0;
+    -fx-background-color: #add8e6;
+    -fx-border-color: #2c3e50;
+    -fx-background-radius: 40;
+    -fx-border-radius: 40;
+    -fx-effect: dropshadow(three-pass-box, #000, 10, 0, 0, 0);
+    -fx-focus-traversable: true;
+    -fx-faint-focus-color: #ff0000;
+    -fx-cursor: hand;
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+    -fx-border-insets: 0 0 -2px 0;
+}
+
+.buttonVolver:hover {
+    -fx-background-color: #d01b15;
+    -fx-pref-height: 25.0;
+    -fx-pref-width: 135.0;
+    -fx-effect: dropshadow(three-pass-box, #000, 13, 0, 0, 0); /* Ajusta el valor de la sombra para que sea más pronunciada */
+    -fx-border-width: 2px; /* Ajusta el ancho del borde */
+    -fx-border-color: #6f100f; /* Cambia el color del borde al pasar el cursor */
+    -fx-border-insets: 0 0 -2px 0;
+    -fx-text-fill: white;
+}
+
+.datePickerFormat {
+    -fx-pref-width: 110px;
+    -fx-pref-height: 30px;
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-text-fill: white;
+}
+
+.datePickerFormat:hover {
+    -fx-background-color: rgba(255, 255, 255, 0);
+}
+
+.datePickerFormat .text-field {
+    -fx-background-color: #ffebd6;
+    -fx-border-color: #2c3e50;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+}
+
+/* Estilos para el calendario desplegable */
+.datePickerFormat .arrow-button {
+    -fx-background-color: #ffebd6;
+    -fx-border-color: #2c3e50;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+}
+
+.datePickerFormat .arrow-button:hover {
+    -fx-background-color: #87a3eb;
+}
+
+.datePickerFormat .date-picker-popup {
+    -fx-pref-width: 700px;
+    -fx-pref-height: 200px;
+    -fx-border-color: #2c3e50;
+    -fx-background-radius: 8;
+    -fx-border-radius: 5;
+    -fx-background-color: #dfe8ff;
+}
+.datePickerFormat .date-picker-popup .month-year-pane {
+    -fx-background-color: #ffcd54;
+}
+.datePickerFormat .date-picker-popup .month-year-pane .label {
+    -fx-text-fill: #2c3e50;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 30px;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
+
+.datePickerFormat .date-picker-popup .month-year-pane .button {
+    -fx-content-display: CENTER;
+    -fx-layout-x: 230.0;
+    -fx-layout-y: 139.0;
+    -fx-mnemonic-parsing: false;
+    -fx-pref-height: 25.0;
+    -fx-pref-width: 40.0;
+    -fx-background-color: #ffebd6;
+    -fx-border-color: #2c3e50;
+    -fx-background-radius: 40;
+    -fx-border-radius: 40;
+    -fx-effect: dropshadow(three-pass-box, #000, 7, 0, 0, 0);
+    -fx-focus-traversable: true;
+    -fx-faint-focus-color: #ff0000;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-padding: 0px;
+}
+
+.datePickerFormat .date-picker-popup .month-year-pane .button:hover {
+    -fx-background-color: #020094;
+    -fx-pref-height: 25.0;
+    -fx-pref-width: 40.0;
+    -fx-effect: dropshadow(three-pass-box, #000, 7, 0, 0, 0); /* Ajusta el valor de la sombra para que sea más pronunciada */
+    -fx-border-width: 0.5px; /* Ajusta el ancho del borde */
+    -fx-border-color: #000; /* Cambia el color del borde al pasar el cursor */
+}
+
+.datePickerFormat .date-picker-popup .calendar-grid .day-cell {
+    -fx-text-fill: #020094;
+    -fx-font-size: 13px;
+
+}
+
+.datePickerFormat .date-picker-popup .calendar-grid .day-cell:hover {
+    -fx-background-color: #0d3eaa;
+    -fx-text-fill: #fff;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+}
+.datePickerFormat .date-picker-popup .calendar-grid {
+    -fx-background-color: WHITE/* Cambia el color del borde */
+}
+
+.datePickerFormat .date-picker-popup .day-name-cell {
+    -fx-background-color: #dfe8ff;
+    -fx-text-fill: #0d3eaa;
+}
+.datePickerFormat .date-picker-popup .week-number-cell {
+    -fx-background-color: #dfe8ff; /* Cambia el color de fondo */
+    -fx-text-fill: #0d3eaa; /* Cambia el color del texto */
+}

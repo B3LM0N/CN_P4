@@ -15,11 +15,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import Modelo.Entidades.*;
 import Controlador.SocioController;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class ControladorFX {
 
@@ -60,11 +63,30 @@ public class ControladorFX {
     @FXML
     private DatePicker fechaFinal;
     @FXML
+    private TextField idSocioInsField;
+    @FXML
+    private DatePicker fechaInicioDate;
+    @FXML
+    private DatePicker fechaFinDate;
+    @FXML
+    private TextField idSocioFacturaField;
+    @FXML
+    private Label factuLabel;
+    @FXML
+    private Label mensajeFacturaLabel;
+    @FXML
+    private Label mensajeFacturaLabel2;
+
+
+
+    @FXML
     private ListView<Excursion> listaExcursiones;
     @FXML
     private ListView<Socio> listaSocios;
     @FXML
     private ChoiceBox<String> choiceBoxTipoSocio;
+    @FXML
+    private ListView<Inscripcion> listaInscripciones;
 
 
     @FXML
@@ -79,10 +101,22 @@ public class ControladorFX {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
+        // Aplicar estilo a la alerta
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/FX/Excursiones/estilos.css")).toExternalForm());
+        dialogPane.getStyleClass().add("dialog-pane");
+
+        // Quitar el borde decorativo por defecto
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.initStyle(StageStyle.UNDECORATED);
+
         alert.showAndWait();
     }
     public void setListaExcursiones(ObservableList<Excursion> excursiones) {
         listaExcursiones.setItems(excursiones);
+    }
+    public void setListaInscripciones(ObservableList<Inscripcion> inscripciones) {
+        listaInscripciones.setItems(inscripciones);
     }
     public void setListaSocios(ObservableList<Socio> socios) {
         listaSocios.setItems(socios);
@@ -126,7 +160,7 @@ public class ControladorFX {
         Date fechaFin = Date.from(fechaFinal.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
 
         if (fechaInicio.after(fechaFin)) {
-            showAlert("Error", "No es ha sido posible seleccionar las fechas.");
+            showAlert("Error", "La fecha de inicio es posterior a la fecha final.");
             return;
         }
         // Filtra las excursiones por fechas
@@ -223,9 +257,25 @@ public class ControladorFX {
         int idSocio = Integer.parseInt(idSocioField.getText());
         int nuevoSeguroContratado = 0;
         String tipoSeguroStr = tipoSeguro.getValue();
-        if (tipoSeguroStr != null) {
-            nuevoSeguroContratado = tipoSeguroStr.startsWith("Basico") ? 1 : 2;
+
+        if (tipoSeguroStr == null) {
+            showAlert("Error", "Debe seleccionar un tipo de seguro.");
+            return;
         }
+
+        switch (tipoSeguroStr) {
+            case "Básico":
+                nuevoSeguroContratado = 1;
+                break;
+            case "Completo":
+                nuevoSeguroContratado = 2;
+                break;
+            default:
+                showAlert("Error", "Tipo de socio no válido.");
+                return;
+        }
+
+
         // Llamar al método de negocio
         Estandar socio = socioController.modificarSeguroSocio(idSocio,nuevoSeguroContratado);
         // Muestra un mensaje de éxito
@@ -341,8 +391,14 @@ public class ControladorFX {
         stage.setScene(new Scene(loader.load()));
         stage.show();
     }
-
-
+    @FXML
+    private void mostrarFactura() {
+        int idSocio = Integer.parseInt(idSocioFacturaField.getText());
+        double factura = socioController.mostrarFacturaTotal(idSocio);
+        mensajeFacturaLabel.setText("Su factura mensual es:");
+        factuLabel.setText(String.valueOf(factura));
+        mensajeFacturaLabel2.setText("Euros.");
+}
 
     @FXML
     protected void menuGestionInscripciones() throws IOException {
@@ -408,41 +464,87 @@ public class ControladorFX {
     }
     @FXML
     protected void mostrarInscripcionSinFiltro() throws IOException {
+        // Muestra todas las inscripciones
+        List<Inscripcion> inscripcionesFiltradas = inscripcionController.mostrar();
+
         // Carga el archivo FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FX/Inscripciones/mostrarInscripciones.fxml"));
+        AnchorPane root = loader.load();
+        // Obtén el controlador y establece la lista de excursiones filtradas
+        ControladorFX controlador = loader.getController();
+        controlador.setListaInscripciones(FXCollections.observableArrayList(inscripcionesFiltradas));
         Stage stage = new Stage();
         stage.setTitle("Lista de Inscripciones sin Filtrar");
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.setScene(new Scene(loader.load()));
+        stage.setScene(new Scene(root));
         stage.show();
     }
     @FXML
     protected void mostrarInscripcionPorSocio() throws IOException {
+        int idSocio = Integer.parseInt(idSocioInsField.getText());
+
+        // Filtra las excursiones por socio
+        List<Inscripcion> inscripcionesFiltradas = inscripcionController.mostrarPorSocio(idSocio);
+
         // Carga el archivo FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FX/Inscripciones/mostrarInscripciones.fxml"));
+        AnchorPane root = loader.load();
+        // Obtén el controlador y establece la lista de excursiones filtradas
+        ControladorFX controlador = loader.getController();
+        controlador.setListaInscripciones(FXCollections.observableArrayList(inscripcionesFiltradas));
         Stage stage = new Stage();
         stage.setTitle("Lista de Inscripciones por Socio");
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.setScene(new Scene(loader.load()));
+        stage.setScene(new Scene(root));
         stage.show();
     }
     @FXML
     protected void mostrarInscripcionPorFecha() throws IOException {
+        Date fechaInicio = Date.from(fechaInicioDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date fechaFin = Date.from(fechaFinDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+        if (fechaInicio.after(fechaFin)) {
+            showAlert("Error", "No es ha sido posible seleccionar las fechas.");
+            return;
+        }
+        // Filtra las excursiones por fechas
+        List<Inscripcion> inscripcionesFiltradas = inscripcionController.mostrarPorFecha(fechaInicio, fechaFin);
         // Carga el archivo FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FX/Inscripciones/mostrarInscripciones.fxml"));
+        AnchorPane root = loader.load();
+        // Obtén el controlador y establece la lista de excursiones filtradas
+        ControladorFX controlador = loader.getController();
+        controlador.setListaInscripciones(FXCollections.observableArrayList(inscripcionesFiltradas));
         Stage stage = new Stage();
         stage.setTitle("Lista de Inscripciones por Fecha");
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.setScene(new Scene(loader.load()));
+        stage.setScene(new Scene(root));
         stage.show();
+
     }
     @FXML
-    protected void mostrarInscripcionPorSocioYFecha() throws IOException {        // Carga el archivo FXML
+    protected void mostrarInscripcionPorSocioYFecha() throws IOException {
+        int idSocio = Integer.parseInt(idSocioInsField.getText());
+        Date fechaInicio = Date.from(fechaInicioDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date fechaFin = Date.from(fechaFinDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+        if (fechaInicio.after(fechaFin)) {
+            showAlert("Error", "No es ha sido posible seleccionar las fechas.");
+            return;
+        }
+        // Filtra las excursiones por socio y fechas
+        List<Inscripcion> inscripcionesFiltradas = inscripcionController.mostrarPorSocioYFecha(idSocio, fechaInicio, fechaFin);
+
+        // Carga el archivo FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FX/Inscripciones/mostrarInscripciones.fxml"));
+        AnchorPane root = loader.load();
+        // Obtén el controlador y establece la lista de excursiones filtradas
+        ControladorFX controlador = loader.getController();
+        controlador.setListaInscripciones(FXCollections.observableArrayList(inscripcionesFiltradas));
         Stage stage = new Stage();
         stage.setTitle("Lista de Inscripciones por Socio y Fecha");
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.setScene(new Scene(loader.load()));
+        stage.setScene(new Scene(root));
         stage.show();
     }
 
