@@ -291,12 +291,14 @@
 /* Estilos para el diálogo de alerta */
 .dialog-pane {
     -fx-background-color: #9ddaa7; /* Color de fondo */
-    -fx-border-color: #2c3e50; /* Color del borde */
-    -fx-border-width: 2px; /* Grosor del borde */
+    -fx-border-color: #006511; /* Color del borde */
+    -fx-border-width: 3 3 3 3; /* Grosor del borde */
     -fx-border-radius: 2px; /* Bordes redondeados */
-    -fx-background-radius: 2px; /* Bordes redondeados */
+    -fx-background-radius: 7px; /* Bordes redondeados */
     -fx-pref-height: 150px; /* Ajustar altura preferida */
     -fx-pref-width: 350px; /* Ajustar ancho preferido */
+    -fx-focus-traversable: true;
+    -fx-faint-focus-color: #ff0000;
 }
 
 .dialog-pane .header-panel {
@@ -309,11 +311,15 @@
     -fx-font-size: 23px; /* Tamaño de la fuente */
     -fx-text-fill: #13136b; /* Color del texto */
     -fx-padding: 10px; /* Ajustar padding del contenido */
+
 }
 
 .dialog-pane .button-bar {
     -fx-background-color: #e0e0e0; /* Color de fondo de la barra de botones */
-    -fx-padding: 10px; /* Ajustar padding de la barra de botones */
+    -fx-border-color: #006511; /* Color del borde */
+    -fx-border-width: 2 0 0 0; /* Grosor del borde */
+    -fx-border-radius: 0px; /* Bordes redondeados */
+    -fx-content-display: CENTER;
 }
 .dialog-pane .button-bar .button {
     -fx-background-color: #4CAF50; /* Color de fondo */
@@ -324,15 +330,17 @@
     -fx-border-width: 2px; /* Grosor del borde */
     -fx-border-radius: 5px; /* Bordes redondeados */
     -fx-background-radius: 5px; /* Bordes redondeados */
+    -fx-cursor: hand;
 }
 
 .dialog-pane .button-bar .button:hover {
--fx-background-color: #d01b15;
+-fx-background-color: #116b14;
     -fx-effect: dropshadow(three-pass-box, #000, 13, 0, 0, 0); /* Ajusta el valor de la sombra para que sea más pronunciada */
     -fx-border-width: 2px; /* Ajusta el ancho del borde */
-    -fx-border-color: #6f100f; /* Cambia el color del borde al pasar el cursor */
+    -fx-border-color: #135b2c; /* Cambia el color del borde al pasar el cursor */
     -fx-border-insets: 0 0 -2px 0;
     -fx-text-fill: white;
+    -fx-cursor: hand;
 
 }
 
